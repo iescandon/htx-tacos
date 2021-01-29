@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/htxtacosDB', {
 	useFindAndModify: false,
 });
 
-// app.use(require('./routes/api.js'));
+app.use(require('./routes/api.js'));
 
 // if (process.env.NODE_ENV === 'production') {
 // 	console.log(process.env.REACT_APP_GOOGLE_API_KEY);
