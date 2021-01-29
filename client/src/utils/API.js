@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = '/api/users';
+const URL = '/api/tacos';
 
 export default {
 	search: function () {

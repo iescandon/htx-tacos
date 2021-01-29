@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const db = require('../models');
 
-router.get('/api/users', (req, res) => {
+router.get('/api/tacos', (req, res) => {
 	db.Users.find({})
 		.then((data) => {
 			res.json(data);
