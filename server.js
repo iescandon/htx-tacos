@@ -17,11 +17,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/htxtacosDB', {
 
 app.use(require('./routes/api.js'));
 
-// if (process.env.NODE_ENV === 'production') {
-// 	console.log(process.env.REACT_APP_GOOGLE_API_KEY);
-// 	app.use(express.static('client/build'));
-// }
-
 app.listen(PORT, () => {
 	console.log(`App running on port ${PORT}!`);
 });
