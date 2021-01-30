@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Geocode from 'react-geocode';
 import './style.css';
 import API from '../../utils/API';
 import Results from '../../components/results';
 import Map from '../../components/map';
 import Filter from '../../components/filter';
+import Search from '../../components/search';
 
 function Home() {
 	const [restaurants, setRestaurants] = useState([]);
@@ -11,9 +13,12 @@ function Home() {
 		lat: 29.749907,
 		lng: -95.358421,
 	});
+	const [userLocation, setUserLocation] = useState({});
+	const [search, setSearch] = useState('');
 
 	useEffect(() => {
 		getRestaurants();
+		getUserLocation();
 	}, []);
 
 	const mapRef = React.useRef();
@@ -36,12 +41,77 @@ function Home() {
 				console.log(err);
 			});
 	};
+
+	const getUserLocation = () => {
+		navigator.geolocation.getCurrentPosition(
+			(position) => {
+				// setCenterPoint({
+				// 	lat: position.coords.latitude,
+				// 	lng: position.coords.longitude,
+				// });
+				setUserLocation({
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+				});
+			},
+			() => null
+		);
+	};
+
+	const handleInputChange = ({ target }) => {
+		const { value } = target;
+		setSearch(value);
+	};
+
+	const getLatAndLong = (search, event) => {
+		event.preventDefault();
+		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+		Geocode.fromAddress(search).then(
+			(response) => {
+				const { lat, lng } = response.results[0].geometry.location;
+				setCenterPoint({
+					lat,
+					lng,
+				});
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
+		setSearch('');
+	};
+
+	// restaurants.map((restaurant) => {
+	// 	restaurant.distance = (
+	// 		getDistance(
+	// 			{ latitude: restaurant.lat, longitude: restaurant.lng },
+	// 			{
+	// 				latitude: centerPoint.lat,
+	// 				longitude: centerPoint.lng,
+	// 			}
+	// 		) * 0.000621371192
+	// 	).toFixed(2);
+	// });
+
 	return (
 		<div className="">
 			<div className="row">
 				<div className="col-7 pr-0">
-					<Filter />
-					<Results restaurants={restaurants} />
+					<div className="row">
+						<div className="col">
+							<Filter />
+						</div>
+						<div className="col">
+							<Search
+								search={search}
+								handleInputChange={handleInputChange}
+								getLatAndLong={getLatAndLong}
+							/>
+						</div>
+					</div>
+					<div className="row">
+						<Results restaurants={restaurants} />
+					</div>
 				</div>
 				<div className="col-5 pl-0" id="map_canvas">
 					<Map centerPoint={centerPoint} onMapLoad={onMapLoad} />

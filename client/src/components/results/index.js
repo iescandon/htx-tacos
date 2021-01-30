@@ -6,11 +6,9 @@ import './style.css';
 // import pic from '../../assets/torchys.jpg';
 
 function Results({ restaurants }) {
-	console.log(restaurants);
 	return (
 		<div className="">
 			{restaurants.map((restaurant) => {
-				console.log(restaurant.name);
 				return (
 					<Link key={restaurant._id} to={`/restaurant/${restaurant.name}`}>
 						<Card restaurant={restaurant} />
