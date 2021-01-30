@@ -7,6 +7,10 @@
 }
 
 .card-title {
-	font-size: 36px !important;
+	font-size: 28px !important;
 	text-shadow: 2px 2px 8px black;
+}
+
+.fa-star {
+	font-size: 28px !important;
 }

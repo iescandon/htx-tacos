@@ -12,7 +12,7 @@ function Results({ restaurants }) {
 			{restaurants.map((restaurant) => {
 				console.log(restaurant.name);
 				return (
-					<Link to={`/restaurant/${restaurant.name}`}>
+					<Link key={restaurant._id} to={`/restaurant/${restaurant.name}`}>
 						<Card restaurant={restaurant} />
 					</Link>
 					// <Card key={restaurant._id} className="bg-dark text-white">
