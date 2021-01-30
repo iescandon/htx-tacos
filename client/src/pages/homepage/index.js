@@ -3,6 +3,7 @@ import './style.css';
 import API from '../../utils/API';
 import Results from '../../components/results';
 import Map from '../../components/map';
+import Filter from '../../components/filter';
 
 function Home() {
 	const [restaurants, setRestaurants] = useState([]);
@@ -39,6 +40,7 @@ function Home() {
 		<div className="">
 			<div className="row">
 				<div className="col-7 pr-0">
+					<Filter />
 					<Results restaurants={restaurants} />
 				</div>
 				<div className="col-5 pl-0" id="map_canvas">

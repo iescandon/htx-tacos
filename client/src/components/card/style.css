@@ -2,6 +2,11 @@
 .card-img,
 .card-img-overlay {
 	border: none !important;
-	height: 40vh;
+	height: 35vh;
 	object-fit: cover;
+}
+
+.card-title {
+	font-size: 36px !important;
+	text-shadow: 2px 2px 8px black;
 }

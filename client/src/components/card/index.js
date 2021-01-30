@@ -4,7 +4,7 @@ import './style.css';
 
 function CardComponent({ restaurant }) {
 	return (
-		<div>
+		<div className="m-3">
 			<Card key={restaurant._id} className="bg-dark text-white res-card">
 				<Card.Img src={restaurant.image} alt="Card image" />
 				<Card.ImgOverlay>
