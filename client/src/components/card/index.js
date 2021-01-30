@@ -32,7 +32,7 @@ function CardComponent({ restaurant }) {
 								<p className="distance">{restaurant.distance} mi</p>
 							</div>
 							<div className="col-4 d-flex justify-content-end">
-								<p className="mr-1">{rating}</p>
+								{rating ? <p className="mr-1">{rating}</p> : null}
 								{starArray.map(() => {
 									// switch (true) {
 									// 	case (rating = 0):

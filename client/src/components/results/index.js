@@ -10,7 +10,11 @@ function Results({ restaurants }) {
 		<div className="col">
 			{restaurants.map((restaurant) => {
 				return (
-					<Link key={restaurant._id} to={`/restaurant/${restaurant.name}`}>
+					<Link
+						// ref={restaurant._id}
+						key={restaurant._id}
+						to={`/restaurant/${restaurant.name}`}
+					>
 						<Card restaurant={restaurant} />
 					</Link>
 					// <Card key={restaurant._id} className="bg-dark text-white">

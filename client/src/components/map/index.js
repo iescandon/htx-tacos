@@ -37,15 +37,19 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 			onLoad={onMapLoad}
 			options={mapOptions}
 		>
-			<Marker
-				position={{ lat: userLocation.lat, lng: userLocation.lng }}
-				// options={{
-				// 	icon: { UserLocationMarker },
-				// 	// icon: require(`../../assets/userLocation.svg`),
-				// }}
-				animation={2}
-				// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
-			/>
+			{userLocation.lat ? (
+				<div>
+					<Marker
+						position={{ lat: userLocation.lat, lng: userLocation.lng }}
+						// options={{
+						// 	icon: { UserLocationMarker },
+						// 	// icon: require(`../../assets/userLocation.svg`),
+						// }}
+						animation={2}
+						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
+					/>
+				</div>
+			) : null}
 			{restaurants[0].location ? (
 				<div>
 					{restaurants.map((res) => {
