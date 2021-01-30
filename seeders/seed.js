@@ -24,6 +24,42 @@ let restaurantSeed = [
 		website: 'https://torchystacos.com/',
 		image: 'https://via.placeholder.com/150',
 	},
+	{
+		name: "Torchy's Tacos",
+		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		// hours: [{"monday": }]
+		phoneNumber: '713-595-8226',
+		rating: -1,
+		website: 'https://torchystacos.com/',
+		image: 'https://via.placeholder.com/150',
+	},
+	{
+		name: "Torchy's Tacos",
+		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		// hours: [{"monday": }]
+		phoneNumber: '713-595-8226',
+		rating: -1,
+		website: 'https://torchystacos.com/',
+		image: 'https://via.placeholder.com/150',
+	},
+	{
+		name: "Torchy's Tacos",
+		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		// hours: [{"monday": }]
+		phoneNumber: '713-595-8226',
+		rating: -1,
+		website: 'https://torchystacos.com/',
+		image: 'https://via.placeholder.com/150',
+	},
+	{
+		name: "Torchy's Tacos",
+		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		// hours: [{"monday": }]
+		phoneNumber: '713-595-8226',
+		rating: -1,
+		website: 'https://torchystacos.com/',
+		image: 'https://via.placeholder.com/150',
+	},
 ];
 
 db.Restaurants.deleteMany({})

@@ -23,7 +23,7 @@ function Home() {
 	const getRestaurants = () => {
 		API.search()
 			.then((res) => {
-				setRestaurants(res.data[0]);
+				setRestaurants(res.data);
 				// if (selectedTrail.trails.length > 0) {
 				// 	const trail = res.data.filter(
 				// 		(trail) => selectedTrail._id === trail._id
@@ -36,12 +36,12 @@ function Home() {
 			});
 	};
 	return (
-		<div className="container mt-4">
+		<div className="">
 			<div className="row">
-				<div className="col-8">
+				<div className="col-8 pr-0">
 					<Results restaurants={restaurants} />
 				</div>
-				<div className="col-4">
+				<div className="col-4 pl-0">
 					<Map centerPoint={centerPoint} onMapLoad={onMapLoad} />
 				</div>
 			</div>
