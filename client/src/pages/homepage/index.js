@@ -38,10 +38,10 @@ function Home() {
 	return (
 		<div className="">
 			<div className="row">
-				<div className="col-8 pr-0">
+				<div className="col-7 pr-0">
 					<Results restaurants={restaurants} />
 				</div>
-				<div className="col-4 pl-0">
+				<div className="col-5 pl-0" id="map_canvas">
 					<Map centerPoint={centerPoint} onMapLoad={onMapLoad} />
 				</div>
 			</div>

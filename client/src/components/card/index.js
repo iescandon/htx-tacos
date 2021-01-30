@@ -7,7 +7,7 @@ function CardComponent({ restaurant }) {
 	return (
 		<div>
 			<Card key={restaurant._id} className="bg-dark text-white res-card">
-				<Card.Img src={pic} alt="Card image" />
+				<Card.Img src={restaurant.image} alt="Card image" />
 				<Card.ImgOverlay>
 					<Card.Title>{restaurant.name}</Card.Title>
 					{/* <Card.Text>

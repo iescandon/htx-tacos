@@ -1,4 +1,7 @@
-.res-card {
+.res-card,
+.card-img,
+.card-img-overlay {
 	border: none !important;
-	height: 200px;
+	height: 40vh;
+	object-fit: cover;
 }

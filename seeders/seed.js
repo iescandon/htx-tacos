@@ -22,43 +22,58 @@ let restaurantSeed = [
 		phoneNumber: '713-595-8226',
 		rating: -1,
 		website: 'https://torchystacos.com/',
-		image: 'https://via.placeholder.com/150',
+		image:
+			'https://cdn.abcotvs.com/dip/images/5729970_table-shot-above-view.jpg',
 	},
 	{
-		name: "Torchy's Tacos",
-		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		name: 'Velvet Taco',
+		address: '4819 Washington Ave, Houston, TX 77007',
 		// hours: [{"monday": }]
-		phoneNumber: '713-595-8226',
+		phoneNumber: '832-834-5908',
 		rating: -1,
-		website: 'https://torchystacos.com/',
-		image: 'https://via.placeholder.com/150',
+		website: 'https://www.velvettaco.com/',
+		image:
+			'https://austinfoodmagazine.com/wp-content/uploads/2017/05/IMG_9599_edited-e1586371805142.jpg',
 	},
 	{
-		name: "Torchy's Tacos",
-		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		name: 'Tacos A Go Go',
+		address: '3704 Main St, Houston, TX 77002',
 		// hours: [{"monday": }]
-		phoneNumber: '713-595-8226',
+		phoneNumber: '713-807-8226',
 		rating: -1,
-		website: 'https://torchystacos.com/',
-		image: 'https://via.placeholder.com/150',
+		website: 'https://www.tacosagogo.com/',
+		image:
+			'https://cdn.vox-cdn.com/thumbor/veOoJE0Y4ilN8le3lbmTvBl9lwc=/0x0:750x560/1200x800/filters:focal(233x183:353x303)/cdn.vox-cdn.com/uploads/chorus_image/image/54213157/tacosagogo_fb.0.jpg',
 	},
 	{
-		name: "Torchy's Tacos",
-		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		name: "Fuzzy's Taco Shop",
+		address: '10275 B S Post Oak Rd, Houston, TX 77096',
 		// hours: [{"monday": }]
-		phoneNumber: '713-595-8226',
+		phoneNumber: '281-501-9917',
 		rating: -1,
-		website: 'https://torchystacos.com/',
-		image: 'https://via.placeholder.com/150',
+		website: 'https://www.fuzzystacoshop.com/locations/houston-tx-meyerland/',
+		image:
+			'https://www.foodbusinessnews.net/ext/resources/2019/6/FuzzysTacoShop_Lead.jpg?1561124906',
 	},
 	{
-		name: "Torchy's Tacos",
-		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		name: 'Chilosos',
+		address: '701 E 20th St, Houston, TX 77008',
 		// hours: [{"monday": }]
-		phoneNumber: '713-595-8226',
+		phoneNumber: '713-868-2273',
 		rating: -1,
-		website: 'https://torchystacos.com/',
-		image: 'https://via.placeholder.com/150',
+		website: 'https://chilososhouston.com/',
+		image:
+			'https://chilososhouston.com/wp-content/uploads/2019/02/food-0379.jpg',
+	},
+	{
+		name: 'La Calle Tacos',
+		address: '909 Franklin St, Houston, TX 77002',
+		// hours: [{"monday": }]
+		phoneNumber: '832-735-8226',
+		rating: -1,
+		website: 'https://www.lacalletacos.com/',
+		image:
+			'https://www.gristleandgossip.com/wp-content/uploads/2019/06/La-Calle-Gristle-Gossip-5.jpg',
 	},
 ];
 

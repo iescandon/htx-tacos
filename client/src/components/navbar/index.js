@@ -5,7 +5,7 @@ import './style.css';
 function NavbarComponent() {
 	return (
 		<div>
-			<Navbar bg="dark">
+			<Navbar bg="dark" className="nav">
 				<Navbar.Brand className="logo" href="#home">
 					HTX Tacos
 				</Navbar.Brand>
