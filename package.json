@@ -1,7 +1,7 @@
 {
 	"name": "htx-tacos",
 	"version": "1.0.0",
-	"description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+	"description": "Tacos",
 	"main": "server.js",
 	"dependencies": {
 		"express": "^4.17.1",

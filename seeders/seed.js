@@ -14,16 +14,27 @@ let messageSeed = [
 	},
 ];
 
-// db.TrailSystem.deleteMany({})
-// 	.then(() => db.TrailSystem.collection.insertMany(trailSystemSeed))
-// 	.then((data) => {
-// 		console.log(data.result.n + ' records inserted!');
-// 		process.exit(0);
-// 	})
-// 	.catch((err) => {
-// 		console.error(err);
-// 		process.exit(1);
-// 	});
+let restaurantSeed = [
+	{
+		name: "Torchy's Tacos",
+		address: '2411 S Shepherd Dr, Houston, TX 77019',
+		// hours: [{"monday": }]
+		phoneNumber: '713-595-8226',
+		rating: -1,
+		website: 'https://torchystacos.com/',
+	},
+];
+
+db.Restaurants.deleteMany({})
+	.then(() => db.Restaurants.collection.insertMany(restaurantSeed))
+	.then((data) => {
+		console.log(data.result.n + ' records inserted!');
+		process.exit(0);
+	})
+	.catch((err) => {
+		console.error(err);
+		process.exit(1);
+	});
 
 db.Users.deleteMany({})
 	.then(() => db.Users.collection.insertMany(messageSeed))
