@@ -1,8 +1,13 @@
 .logo {
 	color: white !important;
 	font-size: 48px !important;
+	font-family: 'Bebas Neue', cursive;
 }
 
 .nav {
 	height: 10vh;
+}
+
+.logo-star {
+	font-size: 3vh !important;
 }

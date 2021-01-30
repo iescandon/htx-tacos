@@ -4,10 +4,15 @@ import './style.css';
 
 function NavbarComponent() {
 	return (
-		<div>
+		<div className="">
 			<Navbar bg="dark" className="nav">
 				<Navbar.Brand className="logo" href="#home">
-					HTX Tacos
+					HTX{' '}
+					<span className="">
+						🌮
+						{/* <i className="fa fa-star logo-star" aria-hidden="true"></i> */}
+					</span>{' '}
+					Tacos
 				</Navbar.Brand>
 				{/* <Navbar.Toggle />
 				<Navbar.Collapse className="justify-content-end">

@@ -21,15 +21,18 @@ function CardComponent({ restaurant }) {
 	};
 
 	return (
-		<div className="m-3">
+		<div className="mb-3 mx-3">
 			<Card key={restaurant._id} className="bg-dark text-white res-card">
 				<Card.Img src={restaurant.image} alt="Card image" />
 				<Card.ImgOverlay>
 					<Card.Title>
 						<div className="row">
-							<div className="col">{restaurant.name}</div>
-							<div className="col d-flex justify-content-end">
-								<p>{rating}</p>
+							<div className="col-8">
+								<p className="mb-0">{restaurant.name}</p>
+								<p className="distance">{restaurant.distance} mi</p>
+							</div>
+							<div className="col-4 d-flex justify-content-end">
+								<p className="mr-1">{rating}</p>
 								{starArray.map(() => {
 									// switch (true) {
 									// 	case (rating = 0):
@@ -59,9 +62,9 @@ function CardComponent({ restaurant }) {
 								})}
 							</div>
 						</div>
-						<div className="row">
-							<div className="col">2.1 mi</div>
-						</div>
+						{/* <div className="row">
+							<div className="col ">2.1 mi</div>
+						</div> */}
 					</Card.Title>
 					{/* <Card.Text>
 						This is a wider card with supporting text below as a natural lead-in

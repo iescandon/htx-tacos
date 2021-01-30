@@ -7,7 +7,7 @@ import './style.css';
 
 function Results({ restaurants }) {
 	return (
-		<div className="">
+		<div className="col">
 			{restaurants.map((restaurant) => {
 				return (
 					<Link key={restaurant._id} to={`/restaurant/${restaurant.name}`}>

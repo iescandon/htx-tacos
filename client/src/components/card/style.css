@@ -7,14 +7,22 @@
 }
 
 .card-title {
-	font-size: 28px !important;
+	font-size: 32px !important;
 	text-shadow: 2px 2px 8px black;
+	font-family: 'Bebas Neue', cursive;
 }
 
 .fa-star {
-	font-size: 28px !important;
+	/* padding-top: 3px;
+	font-size: 28px !important; */
 }
 
 .starYellow {
+	padding-top: 3px;
+	font-size: 28px !important;
 	color: rgb(255, 230, 0);
+}
+
+.distance {
+	font-size: 22px;
 }

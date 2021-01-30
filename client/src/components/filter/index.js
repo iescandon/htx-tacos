@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 
 function Filter() {
-	return <div className="m-3">Filter by distance, abc, review rating</div>;
+	return <div className="m-4">Filter by distance, name, rating</div>;
 }
 
 export default Filter;

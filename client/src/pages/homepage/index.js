@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Geocode from 'react-geocode';
+import { getDistance, isPointWithinRadius } from 'geolib';
 import './style.css';
 import API from '../../utils/API';
 import Results from '../../components/results';
@@ -45,10 +46,10 @@ function Home() {
 	const getUserLocation = () => {
 		navigator.geolocation.getCurrentPosition(
 			(position) => {
-				// setCenterPoint({
-				// 	lat: position.coords.latitude,
-				// 	lng: position.coords.longitude,
-				// });
+				setCenterPoint({
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+				});
 				setUserLocation({
 					lat: position.coords.latitude,
 					lng: position.coords.longitude,
@@ -81,17 +82,33 @@ function Home() {
 		setSearch('');
 	};
 
-	// restaurants.map((restaurant) => {
-	// 	restaurant.distance = (
-	// 		getDistance(
-	// 			{ latitude: restaurant.lat, longitude: restaurant.lng },
-	// 			{
-	// 				latitude: centerPoint.lat,
-	// 				longitude: centerPoint.lng,
-	// 			}
-	// 		) * 0.000621371192
-	// 	).toFixed(2);
-	// });
+	restaurants.map((restaurant) => {
+		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+		Geocode.fromAddress(restaurant.address).then(
+			(response) => {
+				const { lat, lng } = response.results[0].geometry.location;
+				restaurant.location = {
+					lat,
+					lng,
+				};
+				restaurant.distance = (
+					getDistance(
+						{
+							latitude: restaurant.location.lat,
+							longitude: restaurant.location.lng,
+						},
+						{
+							latitude: centerPoint.lat,
+							longitude: centerPoint.lng,
+						}
+					) * 0.000621371192
+				).toFixed(2);
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
+	});
 
 	return (
 		<div className="">
@@ -101,7 +118,7 @@ function Home() {
 						<div className="col">
 							<Filter />
 						</div>
-						<div className="col">
+						<div className="col my-auto">
 							<Search
 								search={search}
 								handleInputChange={handleInputChange}
@@ -114,7 +131,12 @@ function Home() {
 					</div>
 				</div>
 				<div className="col-5 pl-0" id="map_canvas">
-					<Map centerPoint={centerPoint} onMapLoad={onMapLoad} />
+					<Map
+						restaurants={restaurants}
+						centerPoint={centerPoint}
+						onMapLoad={onMapLoad}
+						userLocation={userLocation}
+					/>
 				</div>
 			</div>
 		</div>

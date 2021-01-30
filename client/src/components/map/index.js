@@ -1,12 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
-import {
-	GoogleMap,
-	useLoadScript,
-	Marker,
-	InfoWindow,
-	// OverlayView,
-} from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import UserLocationMarker from '../../assets/userLocation.svg';
 
 const containerStyle = {
 	width: '100%',
@@ -18,7 +13,7 @@ const mapOptions = {
 	zoomControl: true,
 };
 
-function Map({ centerPoint, onMapLoad }) {
+function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 	const { isLoaded, loadError } = useLoadScript({
 		googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
 	});
@@ -33,6 +28,7 @@ function Map({ centerPoint, onMapLoad }) {
 			</div>
 		);
 	}
+
 	return (
 		<GoogleMap
 			mapContainerStyle={containerStyle}
@@ -41,8 +37,37 @@ function Map({ centerPoint, onMapLoad }) {
 			onLoad={onMapLoad}
 			options={mapOptions}
 		>
-			{/* Child components, such as markers, info windows, etc. */}
-			<></>
+			<Marker
+				position={{ lat: userLocation.lat, lng: userLocation.lng }}
+				// options={{
+				// 	icon: { UserLocationMarker },
+				// 	// icon: require(`../../assets/userLocation.svg`),
+				// }}
+				animation={2}
+				// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
+			/>
+			{restaurants[0].location ? (
+				<div>
+					{restaurants.map((res) => {
+						return (
+							<div key={`${res.location.lat}-${res.location.lng}`}>
+								<Marker
+									key={`${res.location.lat}-${res.location.lng}`}
+									position={{ lat: res.location.lat, lng: res.location.lng }}
+									onClick={() => {
+										// setSelectedMarker(marker);
+										// selectTrail(marker);
+									}}
+									// options={{
+									// 	icon: require(`../../assets/${marker.open}.svg`),
+									// }}
+									animation={2}
+								/>
+							</div>
+						);
+					})}
+				</div>
+			) : null}
 		</GoogleMap>
 	);
 }
