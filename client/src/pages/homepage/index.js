@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import API from '../../utils/API';
+import Results from '../../components/results';
+// import Navbar from '../../components/navbar';
+import Map from '../../components/map';
 
 function Home() {
 	const [restaurants, setRestaurants] = useState([]);
@@ -28,9 +31,9 @@ function Home() {
 	};
 	return (
 		<div className="container mt-4">
-			<div>{restaurants.name}</div>
-			<div>{restaurants.address}</div>
-			<div>{restaurants.phoneNumber}</div>
+			{/* <Navbar /> */}
+			<Results restaurants={restaurants} />
+			<Map />
 		</div>
 	);
 }
