@@ -8,6 +8,7 @@ const RestaurantsSchema = new Schema({
 	phoneNumber: { type: String },
 	rating: { type: Number },
 	website: { type: String },
+	image: { type: String },
 });
 
 const Restaurants = mongoose.model('Restaurants', RestaurantsSchema);

@@ -2,21 +2,27 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import API from '../../utils/API';
 import Results from '../../components/results';
-// import Navbar from '../../components/navbar';
 import Map from '../../components/map';
 
 function Home() {
 	const [restaurants, setRestaurants] = useState([]);
+	const [centerPoint, setCenterPoint] = useState({
+		lat: 29.749907,
+		lng: -95.358421,
+	});
 
 	useEffect(() => {
 		getRestaurants();
 	}, []);
 
+	const mapRef = React.useRef();
+	const onMapLoad = React.useCallback((map) => {
+		mapRef.current = map;
+	}, []);
+
 	const getRestaurants = () => {
 		API.search()
 			.then((res) => {
-				console.log('in get restaurant function');
-				console.log(res.data);
 				setRestaurants(res.data[0]);
 				// if (selectedTrail.trails.length > 0) {
 				// 	const trail = res.data.filter(
@@ -31,9 +37,14 @@ function Home() {
 	};
 	return (
 		<div className="container mt-4">
-			{/* <Navbar /> */}
-			<Results restaurants={restaurants} />
-			<Map />
+			<div className="row">
+				<div className="col-8">
+					<Results restaurants={restaurants} />
+				</div>
+				<div className="col-4">
+					<Map centerPoint={centerPoint} onMapLoad={onMapLoad} />
+				</div>
+			</div>
 		</div>
 	);
 }

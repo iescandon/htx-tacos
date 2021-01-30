@@ -22,6 +22,7 @@ let restaurantSeed = [
 		phoneNumber: '713-595-8226',
 		rating: -1,
 		website: 'https://torchystacos.com/',
+		image: 'https://via.placeholder.com/150',
 	},
 ];
 
