@@ -1,7 +1,7 @@
 {
 	"name": "htx-tacos",
 	"version": "1.0.0",
-	"description": "Tacos",
+	"description": "HTX Tacos",
 	"main": "server.js",
 	"dependencies": {
 		"axios": "^0.21.1",
