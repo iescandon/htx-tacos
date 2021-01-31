@@ -11,12 +11,9 @@ function CardComponent({ restaurant }) {
 
 	const ratingAverage = () => {
 		var ratingAvg = 0;
-		// console.log(restaurant.name);
 		restaurant.rating.forEach((num) => {
 			ratingAvg += num;
 		});
-		// console.log(`${restaurant.name}${ratingAvg / restaurant.rating.length}`);
-		// console.log('------------------');
 		setRating(ratingAvg / restaurant.rating.length);
 	};
 
@@ -62,15 +59,7 @@ function CardComponent({ restaurant }) {
 								})}
 							</div>
 						</div>
-						{/* <div className="row">
-							<div className="col ">2.1 mi</div>
-						</div> */}
 					</Card.Title>
-					{/* <Card.Text>
-						This is a wider card with supporting text below as a natural lead-in
-						to additional content. This content is a little bit longer.
-					</Card.Text>
-					<Card.Text>Last updated 3 mins ago</Card.Text> */}
 				</Card.ImgOverlay>
 			</Card>
 		</div>

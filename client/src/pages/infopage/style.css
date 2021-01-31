@@ -1,0 +1,31 @@
+h1 {
+	font-family: 'Bebas Neue', cursive;
+	font-size: 48px !important;
+}
+
+.infoImg {
+	height: 83.5vh;
+	width: 100%;
+	object-fit: cover;
+}
+
+.fa-star {
+	font-size: 28px !important;
+}
+
+.star1:hover,
+.star2:hover,
+.star3:hover,
+.star4:hover,
+.star5:hover {
+	color: rgb(255, 230, 0);
+}
+
+.address:hover {
+	cursor: pointer;
+	color: #007bff;
+}
+
+/* .infoHeader {
+
+} */

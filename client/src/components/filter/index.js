@@ -3,6 +3,16 @@ import { ButtonGroup, Button } from 'react-bootstrap';
 import './style.css';
 
 function Filter({ sortDistance, sortRating, sortName }) {
+	// const handleOrder = () => {
+	// 	handleSort(order, header.name);
+	// 	if (order === 'down') {
+	// 		setOrder('up');
+	// 		return;
+	// 	}
+	// 	setOrder('down');
+
+	// 	return;
+	// };
 	return (
 		<div className="m-4">
 			Filter by:{'  '}

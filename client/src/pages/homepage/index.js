@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Geocode from 'react-geocode';
-import { getDistance, isPointWithinRadius } from 'geolib';
+import { getDistance } from 'geolib';
 import './style.css';
 import API from '../../utils/API';
 import Results from '../../components/results';

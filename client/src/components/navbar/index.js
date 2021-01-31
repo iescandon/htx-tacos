@@ -6,7 +6,7 @@ function NavbarComponent() {
 	return (
 		<div className="">
 			<Navbar bg="dark" className="nav">
-				<Navbar.Brand className="logo" href="#home">
+				<Navbar.Brand className="logo" href="/">
 					HTX{' '}
 					<span className="">
 						🌮

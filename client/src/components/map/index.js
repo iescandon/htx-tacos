@@ -50,7 +50,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 					/>
 				</div>
 			) : null}
-			{restaurants[0].location ? (
+			{/* {restaurants[0].location ? (
 				<div>
 					{restaurants.map((res) => {
 						return (
@@ -71,7 +71,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 						);
 					})}
 				</div>
-			) : null}
+			) : null} */}
 		</GoogleMap>
 	);
 }
