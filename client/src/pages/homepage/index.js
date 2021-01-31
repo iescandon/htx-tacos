@@ -129,7 +129,7 @@ function Home() {
 	let sortRating = () => {
 		console.log('in sort rating func');
 		const filter = restaurants.sort(function (a, b) {
-			return a.rating - b.rating;
+			return a.ratingAvg - b.ratingAvg;
 		});
 		setRestaurants(filter);
 		console.log(restaurants);
@@ -160,12 +160,12 @@ function Home() {
 					</div>
 				</div>
 				<div className="col-5 pl-0" id="map_canvas">
-					{/* <Map
+					<Map
 						restaurants={restaurants}
 						centerPoint={centerPoint}
 						onMapLoad={onMapLoad}
 						userLocation={userLocation}
-					/> */}
+					/>
 				</div>
 			</div>
 		</div>

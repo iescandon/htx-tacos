@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import './style.css';
 
 function CardComponent({ restaurant }) {
-	const [rating, setRating] = useState(0);
+	// const [rating, setRating] = useState(0);
 	const starArray = [1, 2, 3, 4, 5];
 	useEffect(() => {
 		ratingAverage();
@@ -14,7 +14,7 @@ function CardComponent({ restaurant }) {
 		restaurant.rating.forEach((num) => {
 			ratingAvg += num;
 		});
-		setRating(ratingAvg / restaurant.rating.length);
+		restaurant.ratingAvg = ratingAvg / restaurant.rating.length;
 	};
 
 	return (
@@ -29,7 +29,9 @@ function CardComponent({ restaurant }) {
 								<p className="distance">{restaurant.distance} mi</p>
 							</div>
 							<div className="col-4 d-flex justify-content-end">
-								{rating ? <p className="mr-1">{rating}</p> : null}
+								{restaurant.ratingAvg ? (
+									<p className="mr-1">{restaurant.ratingAvg}</p>
+								) : null}
 								{starArray.map(() => {
 									// switch (true) {
 									// 	case (rating = 0):
