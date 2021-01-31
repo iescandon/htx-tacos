@@ -11,6 +11,8 @@ const db = require('../models');
 // 		});
 // });
 
+router.get('/', (req, res) => {});
+
 router.get('/api/tacos', (req, res) => {
 	db.Restaurants.find({})
 		.then((data) => {
