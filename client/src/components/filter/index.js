@@ -14,34 +14,36 @@ function Filter({ sortDistance, sortRating, sortName }) {
 	// 	return;
 	// };
 	return (
-		<div className="m-4">
-			Filter by:{'  '}
-			<ButtonGroup aria-label="Basic example">
-				<Button
-					variant="light"
-					onClick={() => {
-						sortName();
-					}}
-				>
-					Name
-				</Button>
-				<Button
-					variant="light"
-					onClick={() => {
-						sortDistance();
-					}}
-				>
-					Distance
-				</Button>
-				<Button
-					variant="light"
-					onClick={() => {
-						sortRating();
-					}}
-				>
-					Rating
-				</Button>
-			</ButtonGroup>
+		<div className="m-3">
+			<div className="row justify-content-center">Filter by:</div>
+			<div className="row justify-content-center">
+				<ButtonGroup aria-label="Basic example">
+					<Button
+						variant="light"
+						onClick={() => {
+							sortName();
+						}}
+					>
+						Name
+					</Button>
+					<Button
+						variant="light"
+						onClick={() => {
+							sortDistance();
+						}}
+					>
+						Distance
+					</Button>
+					<Button
+						variant="light"
+						onClick={() => {
+							sortRating();
+						}}
+					>
+						Rating
+					</Button>
+				</ButtonGroup>
+			</div>
 		</div>
 	);
 }

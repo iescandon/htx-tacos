@@ -10,22 +10,30 @@ h1 {
 }
 
 .fa-star {
+	padding-top: 3px;
 	font-size: 28px !important;
 }
 
-.star1:hover,
-.star2:hover,
-.star3:hover,
-.star4:hover,
-.star5:hover {
+.rating {
+	unicode-bidi: bidi-override;
+	direction: rtl;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+	content: '\2605';
+	position: absolute;
+	cursor: pointer;
 	color: rgb(255, 230, 0);
+}
+
+.star {
+	padding-top: 3px;
+	font-size: 28px;
+	font-family: 'Bebas Neue', cursive;
 }
 
 .address:hover {
 	cursor: pointer;
-	background-color: rgb(255, 230, 0);
+	font-weight: 600;
 }
-
-/* .infoHeader {
-
-} */

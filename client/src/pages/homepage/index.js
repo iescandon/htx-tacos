@@ -74,9 +74,9 @@ function Home() {
 			}
 		);
 		setSearch('');
+		getDistance();
 	};
 
-	// const getMoreInfo = () => {
 	restaurants.map((restaurant) => {
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 		Geocode.fromAddress(restaurant.address).then(
@@ -104,9 +104,6 @@ function Home() {
 			}
 		);
 	});
-	// };
-
-	// let resArray = restaurants;
 
 	let sortDistance = () => {
 		console.log('in sort distance func');

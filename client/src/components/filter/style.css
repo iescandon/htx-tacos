@@ -1,0 +1,9 @@
+.btn-light {
+	background-color: #e7eaec !important;
+	border-color: #e7eaec !important;
+}
+
+.btn-light:hover {
+	background-color: white !important;
+	/* border-color: white !important; */
+}
