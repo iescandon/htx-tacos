@@ -6,6 +6,10 @@ import './style.css';
 // import pic from '../../assets/torchys.jpg';
 
 function Results({ restaurants }) {
+	// restaurants.forEach((res)=>{
+	// const [`${res}`] = React.useRef();
+	// })
+
 	return (
 		<div className="col">
 			{restaurants.map((restaurant) => {
