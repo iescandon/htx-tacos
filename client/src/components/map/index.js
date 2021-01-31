@@ -37,7 +37,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 			onLoad={onMapLoad}
 			options={mapOptions}
 		>
-			{userLocation.lat ? (
+			{/* {userLocation.lat ? (
 				<div>
 					<Marker
 						position={{ lat: userLocation.lat, lng: userLocation.lng }}
@@ -49,7 +49,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
 					/>
 				</div>
-			) : null}
+			) : null} */}
 			{/* {restaurants[0].location ? (
 				<div>
 					{restaurants.map((res) => {
