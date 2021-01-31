@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const db = require('../models');
-const path = require('path');
+// const path = require('path');
 
 router.get('/api/tacos', (req, res) => {
 	db.Restaurants.find({})
@@ -12,8 +12,8 @@ router.get('/api/tacos', (req, res) => {
 		});
 });
 
-router.use((req, res) =>
-	res.sendFile(path.join(__dirname, '../client/build/index.html'))
-);
+// router.use((req, res) =>
+// 	res.sendFile(path.join(__dirname, '../client/build/index.html'))
+// );
 
 module.exports = router;
