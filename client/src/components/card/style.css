@@ -2,7 +2,7 @@
 .card-img,
 .card-img-overlay {
 	border: none !important;
-	height: 35vh;
+	height: 55vh;
 	object-fit: cover;
 }
 

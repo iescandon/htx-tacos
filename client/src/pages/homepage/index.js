@@ -9,7 +9,7 @@ import Filter from '../../components/filter';
 import Search from '../../components/search';
 
 function Home() {
-	const [restaurants, setRestaurants] = useState([]);
+	let [restaurants, setRestaurants] = useState([]);
 	const [centerPoint, setCenterPoint] = useState({
 		lat: 29.749907,
 		lng: -95.358421,
@@ -31,12 +31,6 @@ function Home() {
 		API.search()
 			.then((res) => {
 				setRestaurants(res.data);
-				// if (selectedTrail.trails.length > 0) {
-				// 	const trail = res.data.filter(
-				// 		(trail) => selectedTrail._id === trail._id
-				// 	);
-				// 	setSelectedTrail(trail[0]);
-				// }
 			})
 			.catch((err) => {
 				console.log(err);
@@ -82,6 +76,7 @@ function Home() {
 		setSearch('');
 	};
 
+	// const getMoreInfo = () => {
 	restaurants.map((restaurant) => {
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 		Geocode.fromAddress(restaurant.address).then(
@@ -109,6 +104,36 @@ function Home() {
 			}
 		);
 	});
+	// };
+
+	// let resArray = restaurants;
+
+	let sortDistance = () => {
+		console.log('in sort distance func');
+		const filter = restaurants.sort(function (a, b) {
+			return a.distance - b.distance;
+		});
+		setRestaurants(filter);
+		console.log(restaurants);
+	};
+
+	let sortName = () => {
+		console.log('in sort name func');
+		const filter = restaurants.sort(function (a, b) {
+			return a.name.localeCompare(b.name);
+		});
+		setRestaurants(filter);
+		console.log(restaurants);
+	};
+
+	let sortRating = () => {
+		console.log('in sort rating func');
+		const filter = restaurants.sort(function (a, b) {
+			return a.rating - b.rating;
+		});
+		setRestaurants(filter);
+		console.log(restaurants);
+	};
 
 	return (
 		<div className="">
@@ -116,7 +141,11 @@ function Home() {
 				<div className="col-7 pr-0">
 					<div className="row">
 						<div className="col">
-							<Filter />
+							<Filter
+								sortDistance={sortDistance}
+								sortName={sortName}
+								sortRating={sortRating}
+							/>
 						</div>
 						<div className="col my-auto">
 							<Search
