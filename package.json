@@ -5,9 +5,10 @@
 	"main": "server.js",
 	"dependencies": {
 		"@react-google-maps/api": "^2.1.1",
-		"express": "^4.17.1",
 		"dotenv": "^8.2.0",
-		"if-env": "^1.0.4"
+		"express": "^4.17.1",
+		"if-env": "^1.0.4",
+		"mongoose": "^5.11.14"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.4",
