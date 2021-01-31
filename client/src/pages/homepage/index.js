@@ -160,12 +160,12 @@ function Home() {
 					</div>
 				</div>
 				<div className="col-5 pl-0" id="map_canvas">
-					{/* <Map
+					<Map
 						restaurants={restaurants}
 						centerPoint={centerPoint}
 						onMapLoad={onMapLoad}
 						userLocation={userLocation}
-					/> */}
+					/>
 				</div>
 			</div>
 		</div>

@@ -37,7 +37,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 			onLoad={onMapLoad}
 			options={mapOptions}
 		>
-			{!userLocation.lat ? null : (
+			{/* {!userLocation.lat ? null : (
 				<div>
 					<Marker
 						position={{ lat: userLocation.lat, lng: userLocation.lng }}
@@ -71,7 +71,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 						);
 					})}
 				</div>
-			)}
+			)} */}
 		</GoogleMap>
 	);
 }
