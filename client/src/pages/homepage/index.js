@@ -124,6 +124,9 @@ function Home({ state }) {
 				) * 0.000621371192
 			).toFixed(2);
 		});
+		newrestaurants.sort(function (a, b) {
+			return a.distance - b.distance;
+		});
 		setRestaurants(newrestaurants);
 	};
 
