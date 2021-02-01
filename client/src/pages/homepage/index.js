@@ -20,7 +20,6 @@ function Home({ state }) {
 	useEffect(() => {
 		getRestaurants();
 		getUserLocation();
-		console.log(`${state} should be here`);
 	}, []);
 
 	const mapRef = React.useRef();
@@ -78,7 +77,25 @@ function Home({ state }) {
 		getDistance();
 	};
 
-	// const getinfo = () => {
+	// const getDistDifference = () => {
+	// 	const newrestaurants = [...restaurants];
+	// 	newrestaurants.map((restaurant) => {
+	// 		restaurant.distance = (
+	// 			getDistance(
+	// 				{
+	// 					latitude: restaurant.location.lat,
+	// 					longitude: restaurant.location.lng,
+	// 				},
+	// 				{
+	// 					latitude: centerPoint.lat,
+	// 					longitude: centerPoint.lng,
+	// 				}
+	// 			) * 0.000621371192
+	// 		).toFixed(2);
+	// 	});
+	// 	setRestaurants(newrestaurants);
+	// };
+
 	restaurants.map((restaurant) => {
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 		Geocode.fromAddress(restaurant.address).then(
@@ -106,7 +123,6 @@ function Home({ state }) {
 			}
 		);
 	});
-	// }
 
 	let sortDistance = (order) => {
 		const newrestaurants = [...restaurants];
@@ -163,6 +179,10 @@ function Home({ state }) {
 	// 	setRestaurants(filter);
 	// 	console.log(restaurants);
 	// };
+	const scrollToDiv = (id) => {
+		const div = document.getElementById(id);
+		div.scrollIntoView({ behavior: 'smooth' });
+	};
 
 	return (
 		<div className="">
@@ -194,6 +214,7 @@ function Home({ state }) {
 						centerPoint={centerPoint}
 						onMapLoad={onMapLoad}
 						userLocation={userLocation}
+						scrollToDiv={scrollToDiv}
 					/>
 				</div>
 			</div>

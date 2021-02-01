@@ -13,7 +13,13 @@ const mapOptions = {
 	zoomControl: true,
 };
 
-function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
+function Map({
+	restaurants,
+	centerPoint,
+	onMapLoad,
+	userLocation,
+	scrollToDiv,
+}) {
 	const { isLoaded, loadError } = useLoadScript({
 		googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
 	});
@@ -29,13 +35,7 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 		);
 	}
 
-	if (
-		isLoaded &&
-		userLocation &&
-		restaurants &&
-		restaurants[0] &&
-		restaurants[0].location
-	) {
+	if (isLoaded && restaurants && restaurants[0] && restaurants[0].location) {
 		return (
 			<GoogleMap
 				mapContainerStyle={containerStyle}
@@ -44,41 +44,34 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 				onLoad={onMapLoad}
 				options={mapOptions}
 			>
-				{/* {!userLocation ? null : ( */}
-				<div>
-					<Marker
-						position={{ lat: userLocation.lat, lng: userLocation.lng }}
-						// options={{
-						// 	icon: { UserLocationMarker },
-						// 	// icon: require(`../../assets/userLocation.svg`),
-						// }}
-						animation={2}
-						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
-					/>
-				</div>
-				{/* )} */}
-				{/* {!restaurants[0].location ? null : ( */}
-				<div>
-					{restaurants.map((res) => {
-						return (
-							<div key={`${res.location.lat}-${res.location.lng}`}>
-								<Marker
-									key={`${res.location.lat}-${res.location.lng}`}
-									position={{ lat: res.location.lat, lng: res.location.lng }}
-									onClick={() => {
-										// setSelectedMarker(marker);
-										// selectTrail(marker);
-									}}
-									// options={{
-									// 	icon: require(`../../assets/${marker.open}.svg`),
-									// }}
-									animation={2}
-								/>
-							</div>
-						);
-					})}
-				</div>
-				{/* )} */}
+				{/* <Marker
+					position={{ lat: userLocation.lat, lng: userLocation.lng }}
+					// options={{
+					// 	icon: { UserLocationMarker },
+					// 	// icon: require(`../../assets/userLocation.svg`),
+					// }}
+					animation={2}
+					// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
+				/> */}
+				{restaurants.map((res) => {
+					return (
+						<div key={`${res.location.lat}-${res.location.lng}`}>
+							<Marker
+								key={`${res.location.lat}-${res.location.lng}`}
+								position={{ lat: res.location.lat, lng: res.location.lng }}
+								onClick={() => {
+									scrollToDiv(res._id);
+									// setSelectedMarker(marker);
+									// selectTrail(marker);
+								}}
+								// options={{
+								// 	icon: require(`../../assets/${marker.open}.svg`),
+								// }}
+								animation={2}
+							/>
+						</div>
+					);
+				})}
 			</GoogleMap>
 		);
 	} else {
