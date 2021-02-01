@@ -5,7 +5,7 @@ import UserLocationMarker from '../../assets/userLocation.svg';
 
 const containerStyle = {
 	width: '100%',
-	height: '90vh',
+	height: '100vh',
 };
 
 const mapOptions = {
@@ -29,15 +29,22 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 		);
 	}
 
-	return (
-		<GoogleMap
-			mapContainerStyle={containerStyle}
-			center={centerPoint}
-			zoom={10}
-			onLoad={onMapLoad}
-			options={mapOptions}
-		>
-			{/* {!userLocation.lat ? null : (
+	if (
+		isLoaded &&
+		userLocation &&
+		restaurants &&
+		restaurants[0] &&
+		restaurants[0].location
+	) {
+		return (
+			<GoogleMap
+				mapContainerStyle={containerStyle}
+				center={centerPoint}
+				zoom={10}
+				onLoad={onMapLoad}
+				options={mapOptions}
+			>
+				{/* {!userLocation ? null : ( */}
 				<div>
 					<Marker
 						position={{ lat: userLocation.lat, lng: userLocation.lng }}
@@ -49,8 +56,8 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
 					/>
 				</div>
-			)}
-			{!restaurants[0].location ? null : (
+				{/* )} */}
+				{/* {!restaurants[0].location ? null : ( */}
 				<div>
 					{restaurants.map((res) => {
 						return (
@@ -71,9 +78,12 @@ function Map({ restaurants, centerPoint, onMapLoad, userLocation }) {
 						);
 					})}
 				</div>
-			)} */}
-		</GoogleMap>
-	);
+				{/* )} */}
+			</GoogleMap>
+		);
+	} else {
+		return <div>...loading</div>;
+	}
 }
 
 export default Map;

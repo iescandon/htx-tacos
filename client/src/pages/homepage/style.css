@@ -8,5 +8,8 @@ body,
 } */
 #map_canvas {
 	/* position: relative; */
-	display: flex;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1;
 }

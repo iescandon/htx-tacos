@@ -13,7 +13,7 @@ function Results({ restaurants }) {
 			{restaurants.map((restaurant) => {
 				return (
 					<Link
-						// ref={restaurant._id}
+						id={restaurant._id}
 						key={restaurant._id}
 						to={`/restaurant/${restaurant.name}`}
 					>

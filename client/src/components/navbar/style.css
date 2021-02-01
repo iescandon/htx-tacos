@@ -6,6 +6,8 @@
 
 .nav {
 	height: 10vh;
+	width: 100%;
+	z-index: 2;
 }
 
 .logo-star {

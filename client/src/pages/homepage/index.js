@@ -8,7 +8,7 @@ import Map from '../../components/map';
 import Filter from '../../components/filter';
 import Search from '../../components/search';
 
-function Home() {
+function Home({ state }) {
 	let [restaurants, setRestaurants] = useState([]);
 	const [centerPoint, setCenterPoint] = useState({
 		lat: 29.749907,
@@ -20,6 +20,7 @@ function Home() {
 	useEffect(() => {
 		getRestaurants();
 		getUserLocation();
+		console.log(`${state} should be here`);
 	}, []);
 
 	const mapRef = React.useRef();
@@ -77,6 +78,7 @@ function Home() {
 		getDistance();
 	};
 
+	// const getinfo = () => {
 	restaurants.map((restaurant) => {
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 		Geocode.fromAddress(restaurant.address).then(
@@ -104,33 +106,39 @@ function Home() {
 			}
 		);
 	});
+	// }
 
 	let sortDistance = () => {
-		console.log('in sort distance func');
-		const filter = restaurants.sort(function (a, b) {
+		const newrestaurants = [...restaurants];
+		newrestaurants.sort(function (a, b) {
 			return a.distance - b.distance;
 		});
-		setRestaurants(filter);
-		console.log(restaurants);
+		setRestaurants(newrestaurants);
 	};
 
 	let sortName = () => {
-		console.log('in sort name func');
-		const filter = restaurants.sort(function (a, b) {
+		const newrestaurants = [...restaurants];
+		newrestaurants.sort(function (a, b) {
 			return a.name.localeCompare(b.name);
 		});
-		setRestaurants(filter);
-		console.log(restaurants);
+		setRestaurants(newrestaurants);
 	};
 
 	let sortRating = () => {
-		console.log('in sort rating func');
-		const filter = restaurants.sort(function (a, b) {
+		const newrestaurants = [...restaurants];
+		newrestaurants.sort(function (a, b) {
 			return a.ratingAvg - b.ratingAvg;
 		});
-		setRestaurants(filter);
-		console.log(restaurants);
+		setRestaurants(newrestaurants);
 	};
+
+	// let sortRating = () => {
+	// 	const filter = restaurants.sort(function (a, b) {
+	// 		return a.ratingAvg - b.ratingAvg;
+	// 	});
+	// 	setRestaurants(filter);
+	// 	console.log(restaurants);
+	// };
 
 	return (
 		<div className="">
