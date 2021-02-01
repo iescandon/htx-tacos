@@ -13,7 +13,11 @@ function CardComponent({ restaurant }) {
 		restaurant.rating.forEach((num) => {
 			ratingAvg += num;
 		});
-		restaurant.ratingAvg = ratingAvg / restaurant.rating.length;
+		if (ratingAvg === 0) {
+			restaurant.ratingAvg = ratingAvg;
+		} else {
+			restaurant.ratingAvg = ratingAvg / restaurant.rating.length;
+		}
 	};
 
 	return (

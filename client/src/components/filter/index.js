@@ -1,18 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
 import './style.css';
 
 function Filter({ sortDistance, sortRating, sortName }) {
-	// const handleOrder = () => {
-	// 	handleSort(order, header.name);
-	// 	if (order === 'down') {
-	// 		setOrder('up');
-	// 		return;
-	// 	}
-	// 	setOrder('down');
+	const [distanceOrder, setDistanceOrder] = useState(true);
+	const [ratingOrder, setRatingOrder] = useState(true);
+	const [nameOrder, setNameOrder] = useState(true);
 
-	// 	return;
-	// };
 	return (
 		<div className="m-3">
 			<div className="row justify-content-center">Filter by:</div>
@@ -21,7 +15,9 @@ function Filter({ sortDistance, sortRating, sortName }) {
 					<Button
 						variant="light"
 						onClick={() => {
-							sortName();
+							sortName(nameOrder);
+							const newOrder = !nameOrder;
+							setNameOrder(newOrder);
 						}}
 					>
 						Name
@@ -29,7 +25,9 @@ function Filter({ sortDistance, sortRating, sortName }) {
 					<Button
 						variant="light"
 						onClick={() => {
-							sortDistance();
+							sortDistance(distanceOrder);
+							const newOrder = !distanceOrder;
+							setDistanceOrder(newOrder);
 						}}
 					>
 						Distance
@@ -37,7 +35,9 @@ function Filter({ sortDistance, sortRating, sortName }) {
 					<Button
 						variant="light"
 						onClick={() => {
-							sortRating();
+							sortRating(ratingOrder);
+							const newOrder = !ratingOrder;
+							setRatingOrder(newOrder);
 						}}
 					>
 						Rating

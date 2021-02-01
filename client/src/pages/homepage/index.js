@@ -108,27 +108,51 @@ function Home({ state }) {
 	});
 	// }
 
-	let sortDistance = () => {
+	let sortDistance = (order) => {
 		const newrestaurants = [...restaurants];
-		newrestaurants.sort(function (a, b) {
-			return a.distance - b.distance;
-		});
+		if (order) {
+			newrestaurants.sort(function (a, b) {
+				return a.distance - b.distance;
+			});
+		} else {
+			newrestaurants
+				.sort(function (a, b) {
+					return a.distance - b.distance;
+				})
+				.reverse();
+		}
 		setRestaurants(newrestaurants);
 	};
 
-	let sortName = () => {
+	let sortName = (order) => {
 		const newrestaurants = [...restaurants];
-		newrestaurants.sort(function (a, b) {
-			return a.name.localeCompare(b.name);
-		});
+		if (order) {
+			newrestaurants.sort(function (a, b) {
+				return a.name.localeCompare(b.name);
+			});
+		} else {
+			newrestaurants
+				.sort(function (a, b) {
+					return a.name.localeCompare(b.name);
+				})
+				.reverse();
+		}
 		setRestaurants(newrestaurants);
 	};
 
-	let sortRating = () => {
+	let sortRating = (order) => {
 		const newrestaurants = [...restaurants];
-		newrestaurants.sort(function (a, b) {
-			return a.ratingAvg - b.ratingAvg;
-		});
+		if (order) {
+			newrestaurants
+				.sort(function (a, b) {
+					return a.ratingAvg - b.ratingAvg;
+				})
+				.reverse();
+		} else {
+			newrestaurants.sort(function (a, b) {
+				return a.ratingAvg - b.ratingAvg;
+			});
+		}
 		setRestaurants(newrestaurants);
 	};
 
