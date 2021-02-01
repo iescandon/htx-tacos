@@ -22,6 +22,10 @@ function Home({ state }) {
 		getUserLocation();
 	}, []);
 
+	useEffect(() => {
+		getDistDifference();
+	}, [centerPoint.lat]);
+
 	const mapRef = React.useRef();
 	const onMapLoad = React.useCallback((map) => {
 		mapRef.current = map;
@@ -53,49 +57,6 @@ function Home({ state }) {
 		);
 	};
 
-	const handleInputChange = ({ target }) => {
-		const { value } = target;
-		setSearch(value);
-	};
-
-	const getLatAndLong = (search, event) => {
-		event.preventDefault();
-		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-		Geocode.fromAddress(search).then(
-			(response) => {
-				const { lat, lng } = response.results[0].geometry.location;
-				setCenterPoint({
-					lat,
-					lng,
-				});
-			},
-			(error) => {
-				console.error(error);
-			}
-		);
-		setSearch('');
-		getDistance();
-	};
-
-	// const getDistDifference = () => {
-	// 	const newrestaurants = [...restaurants];
-	// 	newrestaurants.map((restaurant) => {
-	// 		restaurant.distance = (
-	// 			getDistance(
-	// 				{
-	// 					latitude: restaurant.location.lat,
-	// 					longitude: restaurant.location.lng,
-	// 				},
-	// 				{
-	// 					latitude: centerPoint.lat,
-	// 					longitude: centerPoint.lng,
-	// 				}
-	// 			) * 0.000621371192
-	// 		).toFixed(2);
-	// 	});
-	// 	setRestaurants(newrestaurants);
-	// };
-
 	restaurants.map((restaurant) => {
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 		Geocode.fromAddress(restaurant.address).then(
@@ -123,6 +84,48 @@ function Home({ state }) {
 			}
 		);
 	});
+
+	const handleInputChange = ({ target }) => {
+		const { value } = target;
+		setSearch(value);
+	};
+
+	const getLatAndLong = (search, event) => {
+		event.preventDefault();
+		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+		Geocode.fromAddress(search).then(
+			(response) => {
+				const { lat, lng } = response.results[0].geometry.location;
+				setCenterPoint({
+					lat,
+					lng,
+				});
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
+		setSearch('');
+	};
+
+	const getDistDifference = () => {
+		const newrestaurants = [...restaurants];
+		newrestaurants.map((restaurant) => {
+			restaurant.distance = (
+				getDistance(
+					{
+						latitude: restaurant.location.lat,
+						longitude: restaurant.location.lng,
+					},
+					{
+						latitude: centerPoint.lat,
+						longitude: centerPoint.lng,
+					}
+				) * 0.000621371192
+			).toFixed(2);
+		});
+		setRestaurants(newrestaurants);
+	};
 
 	let sortDistance = (order) => {
 		const newrestaurants = [...restaurants];

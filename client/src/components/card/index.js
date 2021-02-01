@@ -29,7 +29,9 @@ function CardComponent({ restaurant }) {
 						<div className="row">
 							<div className="col-8">
 								<p className="mb-0">{restaurant.name}</p>
-								<p className="distance">{restaurant.distance} mi</p>
+								{restaurant.distance ? (
+									<p className="distance">{restaurant.distance} mi</p>
+								) : null}
 							</div>
 							<div className="col-4 d-flex justify-content-end">
 								{restaurant.ratingAvg ? (

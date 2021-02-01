@@ -17,6 +17,7 @@ h1 {
 .rating {
 	unicode-bidi: bidi-override;
 	direction: rtl;
+	color: rgb(255, 230, 0);
 }
 
 .rating > span:hover:before,

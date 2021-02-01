@@ -44,15 +44,16 @@ function Map({
 				onLoad={onMapLoad}
 				options={mapOptions}
 			>
-				{/* <Marker
-					position={{ lat: userLocation.lat, lng: userLocation.lng }}
-					// options={{
-					// 	icon: { UserLocationMarker },
-					// 	// icon: require(`../../assets/userLocation.svg`),
-					// }}
-					animation={2}
-					// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
-				/> */}
+				{/* {userLocation ? (
+					<Marker
+						position={{ lat: userLocation.lat, lng: userLocation.lng }}
+						// options={{
+						// 	icon: require('../../assets/userLocation.svg'),
+						// }}
+						animation={2}
+						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
+					/>
+				) : null} */}
 				{restaurants.map((res) => {
 					return (
 						<div key={`${res.location.lat}-${res.location.lng}`}>
