@@ -3,27 +3,25 @@ import './style.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
 
-function InfoPage({ restaurants, setRestaurants }) {
+function InfoPage({ restaurants }) {
 	const notify = () => toast.dark('Address Copied!');
-	const [restaurantName, setRestaurantName] = useState('');
-	const [selectedRestaurant, setSelectedRestaurant] = useState({});
+	const [restaurantID, setRestaurantID] = useState('');
 
 	useEffect(() => {
 		setRestaurant();
 	}, []);
 
 	const setRestaurant = () => {
-		let param = window.location.pathname;
-		let param2 = param.replace(/%20/g, ' ');
-		let param3 = param2.replace('/', '');
-		setRestaurantName(param3);
-		// console.log(selectedRestaurant);
+		// let param = window.location.pathname;
+		// // let paramEdit = param.replace(/%20/g, ' ').replace('/', '');
+		// 		let paramEdit = param.replace('/', '');
+		setRestaurantID(window.location.pathname.replace('/', ''));
 	};
 
 	return (
 		<div className="container mt-4">
 			{restaurants.map((res) => {
-				if (res.name === restaurantName) {
+				if (res._id === restaurantID) {
 					return (
 						<div className="row">
 							<div className="col my-auto">

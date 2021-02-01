@@ -11,7 +11,7 @@ function Results({ restaurants }) {
 					<Link
 						id={restaurant._id}
 						key={restaurant._id}
-						to={`/${restaurant.name}`}
+						to={`/${restaurant._id}`}
 					>
 						<Card restaurant={restaurant} />
 					</Link>

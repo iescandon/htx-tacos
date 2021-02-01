@@ -51,13 +51,8 @@ function App() {
 						)}
 					/>
 					<Route
-						path="/:restaurantName"
-						render={() => (
-							<InfoPage
-								restaurants={restaurants}
-								setRestaurants={setRestaurants}
-							/>
-						)}
+						path="/:restaurantID"
+						render={() => <InfoPage restaurants={restaurants} />}
 					/>
 					<ToastContainer
 						position="bottom-left"
