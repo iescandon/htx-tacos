@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../card';
 import './style.css';
@@ -11,7 +11,7 @@ function Results({ restaurants }) {
 					<Link
 						id={restaurant._id}
 						key={restaurant._id}
-						to={`/restaurant/${restaurant.name}`}
+						to={`/${restaurant.name}`}
 					>
 						<Card restaurant={restaurant} />
 					</Link>

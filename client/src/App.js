@@ -1,22 +1,64 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './pages/homepage';
 import Navbar from './components/navbar';
 import InfoPage from './pages/infopage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import API from './utils/API';
 
 function App() {
-	const [state, setState] = useState('hello');
+	let [restaurants, setRestaurants] = useState([]);
+
+	useEffect(() => {
+		getRestaurants();
+	}, []);
+
+	const getRestaurants = () => {
+		API.search()
+			.then((res) => {
+				setRestaurants(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<div>
 			<Navbar />
 			<Router>
 				<div>
-					<Route exact path="/" render={() => <HomePage state={state} />} />
-					<Route exact path="/home" component={HomePage} />
-					<Route path="/restaurant" component={InfoPage} />
+					<Route
+						exact
+						path="/"
+						render={() => (
+							<HomePage
+								restaurants={restaurants}
+								setRestaurants={setRestaurants}
+							/>
+						)}
+					/>
+					<Route
+						exact
+						path="/home"
+						render={() => (
+							<HomePage
+								restaurants={restaurants}
+								setRestaurants={setRestaurants}
+							/>
+						)}
+					/>
+					<Route
+						path="/:restaurantName"
+						render={() => (
+							<InfoPage
+								restaurants={restaurants}
+								setRestaurants={setRestaurants}
+							/>
+						)}
+					/>
 					<ToastContainer
 						position="bottom-left"
 						autoClose={2000}

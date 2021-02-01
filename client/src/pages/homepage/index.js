@@ -2,23 +2,24 @@ import React, { useState, useEffect } from 'react';
 import Geocode from 'react-geocode';
 import { getDistance } from 'geolib';
 import './style.css';
-import API from '../../utils/API';
+// import API from '../../utils/API';
 import Results from '../../components/results';
 import Map from '../../components/map';
 import Filter from '../../components/filter';
 import Search from '../../components/search';
 
-function Home({ state }) {
-	let [restaurants, setRestaurants] = useState([]);
+function Home({ restaurants, setRestaurants }) {
+	// let [restaurants, setRestaurants] = useState([]);
 	const [centerPoint, setCenterPoint] = useState({
 		lat: 29.749907,
 		lng: -95.358421,
 	});
 	const [userLocation, setUserLocation] = useState({});
 	const [search, setSearch] = useState('');
+	const spinnerArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 	useEffect(() => {
-		getRestaurants();
+		// getRestaurants();
 		getUserLocation();
 	}, []);
 
@@ -31,15 +32,15 @@ function Home({ state }) {
 		mapRef.current = map;
 	}, []);
 
-	const getRestaurants = () => {
-		API.search()
-			.then((res) => {
-				setRestaurants(res.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
+	// const getRestaurants = () => {
+	// 	API.search()
+	// 		.then((res) => {
+	// 			setRestaurants(res.data);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// };
 
 	const getUserLocation = () => {
 		navigator.geolocation.getCurrentPosition(
@@ -193,27 +194,46 @@ function Home({ state }) {
 	return (
 		<div className="">
 			<div className="row">
-				<div className="col-7 pr-0">
-					<div className="row">
-						<div className="col">
-							<Filter
-								sortDistance={sortDistance}
-								sortName={sortName}
-								sortRating={sortRating}
-							/>
+				{restaurants && restaurants[0] && restaurants[0].distance ? (
+					<div className="col-7 pr-0">
+						<div className="row">
+							<div className="col">
+								<Filter
+									sortDistance={sortDistance}
+									sortName={sortName}
+									sortRating={sortRating}
+								/>
+							</div>
+							<div className="col my-auto">
+								<Search
+									search={search}
+									handleInputChange={handleInputChange}
+									getLatAndLong={getLatAndLong}
+								/>
+							</div>
 						</div>
-						<div className="col my-auto">
-							<Search
-								search={search}
-								handleInputChange={handleInputChange}
-								getLatAndLong={getLatAndLong}
-							/>
+						<div className="row">
+							<Results restaurants={restaurants} />
 						</div>
 					</div>
-					<div className="row">
-						<Results restaurants={restaurants} />
+				) : (
+					<div className="container">
+						<div className="row text-center">
+							<div className="col loadingDiv my-auto">
+								<div className="sk-circle">
+									{spinnerArray.map((num) => {
+										return (
+											<div
+												key={num}
+												className={`sk-circle${num} sk-child`}
+											></div>
+										);
+									})}
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
+				)}
 				<div className="col-5 pl-0" id="map_canvas">
 					<Map
 						restaurants={restaurants}

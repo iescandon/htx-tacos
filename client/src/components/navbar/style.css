@@ -1,13 +1,18 @@
 .logo {
+	padding-bottom: 3px !important;
 	color: white !important;
-	font-size: 48px !important;
+	font-size: 68px !important;
 	font-family: 'Bebas Neue', cursive;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .nav {
-	height: 10vh;
+	height: 12vh;
 	width: 100%;
 	z-index: 2;
+	text-align: center;
 }
 
 .logo-star {

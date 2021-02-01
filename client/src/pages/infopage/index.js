@@ -1,99 +1,91 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
 
-function InfoPage() {
+function InfoPage({ restaurants, setRestaurants }) {
 	const notify = () => toast.dark('Address Copied!');
+	const [restaurantName, setRestaurantName] = useState('');
+	const [selectedRestaurant, setSelectedRestaurant] = useState({});
+
+	useEffect(() => {
+		setRestaurant();
+	}, []);
+
+	const setRestaurant = () => {
+		let param = window.location.pathname;
+		let param2 = param.replace(/%20/g, ' ');
+		let param3 = param2.replace('/', '');
+		setRestaurantName(param3);
+		// console.log(selectedRestaurant);
+	};
+
 	return (
 		<div className="container mt-4">
-			<div className="row">
-				<div className="col">
-					<img
-						className="infoImg"
-						src="https://cdn.abcotvs.com/dip/images/5729970_table-shot-above-view.jpg"
-						alt=""
-					/>
-				</div>
-				<div className="col my-auto">
-					<h1 className="infoHeader row justify-content-center">
-						Torchy's Tacos
-					</h1>
-					<CopyToClipboard text="2411 S Shepherd Dr, Houston, TX 77019">
-						<p className="address row justify-content-center" onClick={notify}>
-							2411 S Shepherd Dr, Houston, TX 77019
-						</p>
-					</CopyToClipboard>
+			{restaurants.map((res) => {
+				if (res.name === restaurantName) {
+					return (
+						<div className="row">
+							<div className="col my-auto">
+								<img className="infoImg" src={res.image} alt="" />
+							</div>
+							<div className="col my-auto">
+								<h1 className="infoHeader row justify-content-center">
+									{res.name}
+								</h1>
+								<CopyToClipboard text="2411 S Shepherd Dr, Houston, TX 77019">
+									<p
+										className="address row justify-content-center"
+										onClick={notify}
+									>
+										{res.address}
+									</p>
+								</CopyToClipboard>
 
-					{/* <p>OPEN/CLOSED/HOURS</p> */}
-					<p className="row justify-content-center">713-595-8226</p>
-					<a
-						className="row justify-content-center"
-						href="https://torchystacos.com/"
-					>
-						https://torchystacos.com/
-					</a>
-					<div className="row justify-content-center mt-3">
-						<div class="rating">
-							<span
-								className="star"
-								onClick={() => console.log('5 star rating')}
-							>
-								☆
-							</span>
-							<span
-								className="star"
-								onClick={() => console.log('4 star rating')}
-							>
-								☆
-							</span>
-							<span
-								className="star"
-								onClick={() => console.log('3 star rating')}
-							>
-								☆
-							</span>
-							<span
-								className="star"
-								onClick={() => console.log('2 star rating')}
-							>
-								☆
-							</span>
-							<span
-								className="star"
-								onClick={() => console.log('1 star rating')}
-							>
-								☆
-							</span>
+								{/* <p>OPEN/CLOSED/HOURS</p> */}
+								<p className="row justify-content-center">{res.phoneNumber}</p>
+								<a className="row justify-content-center" href={res.website}>
+									{res.website}
+								</a>
+								<div className="row justify-content-center mt-3">
+									<div className="rating">
+										<span
+											className="star"
+											onClick={() => console.log('5 star rating')}
+										>
+											☆
+										</span>
+										<span
+											className="star"
+											onClick={() => console.log('4 star rating')}
+										>
+											☆
+										</span>
+										<span
+											className="star"
+											onClick={() => console.log('3 star rating')}
+										>
+											☆
+										</span>
+										<span
+											className="star"
+											onClick={() => console.log('2 star rating')}
+										>
+											☆
+										</span>
+										<span
+											className="star"
+											onClick={() => console.log('1 star rating')}
+										>
+											☆
+										</span>
+									</div>
+								</div>
+							</div>
 						</div>
-						{/* <i
-							className="fa fa-star star1"
-							aria-hidden="true"
-							onMouseEnter={() => console.log('1 star rating')}
-						></i>
-						<i
-							className="fa fa-star star2"
-							aria-hidden="true"
-							onMouseEnter={() => console.log('2 star rating')}
-						></i>
-						<i
-							className="fa fa-star star3"
-							aria-hidden="true"
-							onMouseEnter={() => console.log('3 star rating')}
-						></i>
-						<i
-							className="fa fa-star star4"
-							aria-hidden="true"
-							onMouseEnter={() => console.log('4 star rating')}
-						></i>
-						<i
-							className="fa fa-star star5"
-							aria-hidden="true"
-							onMouseEnter={() => console.log('5 star rating')}
-						></i> */}
-					</div>
-				</div>
-			</div>
+					);
+				}
+			})}
 		</div>
 	);
 }
