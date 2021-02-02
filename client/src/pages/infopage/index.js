@@ -40,7 +40,12 @@ function InfoPage({ restaurants, addRating }) {
 										{res.address}
 									</p>
 								</CopyToClipboard>
-								<p className="row justify-content-center">{res.phoneNumber}</p>
+								<a
+									className="row justify-content-center mb-3"
+									href={`tel:${res.phoneNumber}`}
+								>
+									{res.phoneNumber}
+								</a>
 								<a
 									className="row justify-content-center mb-3"
 									href={res.website}
