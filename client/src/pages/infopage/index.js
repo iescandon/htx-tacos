@@ -15,9 +15,6 @@ function InfoPage({ restaurants, addRating }) {
 	}, []);
 
 	const setRestaurant = () => {
-		// let param = window.location.pathname;
-		// // let paramEdit = param.replace(/%20/g, ' ').replace('/', '');
-		// 		let paramEdit = param.replace('/', '');
 		setRestaurantID(window.location.pathname.replace('/', ''));
 	};
 
@@ -42,8 +39,6 @@ function InfoPage({ restaurants, addRating }) {
 										{res.address}
 									</p>
 								</CopyToClipboard>
-
-								{/* <p>OPEN/CLOSED/HOURS</p> */}
 								<p className="row justify-content-center">{res.phoneNumber}</p>
 								<a className="row justify-content-center" href={res.website}>
 									{res.website}
@@ -129,3 +124,37 @@ function InfoPage({ restaurants, addRating }) {
 }
 
 export default InfoPage;
+
+// import React, { useState, useEffect } from 'react';
+// import './style.css';
+// import InfoComponent from '../../components/info';
+
+// function InfoPage({ restaurants, addRating }) {
+// 	const [restaurantID, setRestaurantID] = useState('');
+
+// 	useEffect(() => {
+// 		setRestaurant();
+// 	}, []);
+
+// 	const setRestaurant = () => {
+// 		setRestaurantID(window.location.pathname.replace('/', ''));
+// 	};
+
+// 	return (
+// 		<div className="container mt-4">
+// 			{restaurants.map((res) => {
+// 				if (res._id === restaurantID) {
+// 					return (
+// 						<InfoComponent
+// 							res={res}
+// 							restaurantID={restaurantID}
+// 							addRating={addRating}
+// 						/>
+// 					);
+// 				}
+// 			})}
+// 		</div>
+// 	);
+// }
+
+// export default InfoPage;

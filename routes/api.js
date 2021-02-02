@@ -13,8 +13,6 @@ router.get('/api/tacos', (req, res) => {
 });
 
 router.put('/api/tacos/:id', (req, res) => {
-	console.log('in backend api');
-	console.log(req.body.rating);
 	db.Restaurants.updateOne(
 		{ _id: req.params.id },
 		{ $push: { rating: req.body.rating } }

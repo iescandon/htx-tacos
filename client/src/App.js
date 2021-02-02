@@ -26,12 +26,8 @@ function App() {
 	};
 
 	const addRating = (id, rating) => {
-		console.log('in app.js');
-		console.log(rating);
 		API.add(id, rating)
 			.then((res) => {
-				console.log('success');
-				console.log(res.data);
 				getRestaurants();
 			})
 			.catch((err) => {
