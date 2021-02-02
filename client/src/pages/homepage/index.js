@@ -12,7 +12,10 @@ function Home({ restaurants, setRestaurants }) {
 		lat: 29.749907,
 		lng: -95.358421,
 	});
-	const [userLocation, setUserLocation] = useState({});
+	const [userLocation, setUserLocation] = useState({
+		lat: 29.749907,
+		lng: -95.358421,
+	});
 	const [search, setSearch] = useState('');
 	const spinnerArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -43,6 +46,13 @@ function Home({ restaurants, setRestaurants }) {
 			},
 			() => null
 		);
+	};
+
+	const resetCenterPoint = () => {
+		setCenterPoint({
+			lat: userLocation.lat,
+			lng: userLocation.lng,
+		});
 	};
 
 	restaurants.map((restaurant) => {
@@ -201,7 +211,7 @@ function Home({ restaurants, setRestaurants }) {
 							restaurants={restaurants}
 							centerPoint={centerPoint}
 							onMapLoad={onMapLoad}
-							userLocation={userLocation}
+							resetCenterPoint={resetCenterPoint}
 							scrollToDiv={scrollToDiv}
 						/>
 					</div>

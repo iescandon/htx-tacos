@@ -1,0 +1,13 @@
+.mapbtn {
+	position: absolute !important;
+	right: 1rem;
+	bottom: 6.5rem;
+	background: none;
+	border: none;
+	z-index: 10;
+}
+
+.fa-location-arrow {
+	font-size: 28px;
+	color: #5f6469;
+}
