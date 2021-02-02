@@ -8,7 +8,7 @@ https://htx-tacos.herokuapp.com/
 
 ![Alt Text](./client/src/assets/homepage.png) ![Alt Text](./client/src/assets/infopage.png)`
 
-This application is a full-stack application designed to find nearby taco restaurants in Houston, TX. The user can search by their address or zip code to find restaurants near them as well as filter the results by name, distance, and rating. If user allows location access, the map will automatically render in their current location. An interactive map shows the restaurants listed on the map with markers. When a marker is clicked, the window scrolls to which restaurant it is on the left hand side. When a user clicks on a restaurant, a new page is rendered with restaurant information. This page also allows for users to rate restaurants.
+This application is a full-stack application designed to find nearby taco restaurants in Houston, TX. The user can search by their address or zip code to find restaurants near them as well as filter the results by name, distance, and rating. If user allows location access, the map will automatically render in their current location. An interactive map shows the restaurants listed on the map with markers. When a marker is clicked, the window scrolls to which restaurant it is on the left hand side. When a user clicks on a restaurant, a new page is rendered with restaurant information. This page also allows for users to rate restaurants. Because of the nature of the targeted users, this app is designed to be very mobile responsive and fully functional on even the smallest screens.
 
 ## Table of Contents
 
@@ -44,14 +44,14 @@ Simply click on the live link listed above and use the website as normal.
 
 ## License
 
-Copyright (c) [2020][inezescandon]
-The license is MIT License.
+Copyright (c) [2020][inezescandon]  
+The license is MIT License.  
 Read more about it at https://opensource.org/licenses/MIT.
 
 ## Credits
 
-HTML/CSS Code for loading spinner: https://tobiasahlin.com/spinkit/
-HTML/CSS Code for five star rating: https://css-tricks.com/star-ratings/
+- HTML/CSS Code for loading spinner: https://tobiasahlin.com/spinkit/
+- HTML/CSS Code for five star rating: https://css-tricks.com/star-ratings/
 
 ## Tests
 
@@ -59,5 +59,5 @@ No tests available.
 
 ## Questions
 
-If you have any additional questions please contact me at iescan4@gmail.com.
+If you have any additional questions please contact me at iescan4@gmail.com.  
 GitHub: https://github.com/iescandon
