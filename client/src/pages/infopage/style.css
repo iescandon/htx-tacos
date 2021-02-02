@@ -48,21 +48,9 @@ h1 {
 	font-size: 28px;
 }
 
-@media (max-width: 1199px) {
-}
-
-@media (max-width: 991px) {
-}
-
 @media (max-width: 767px) {
 	.infoImg {
 		height: 20vh;
 		padding-bottom: 35px;
 	}
-}
-
-@media (max-width: 575px) {
-}
-
-@media (max-width: 414px) {
 }

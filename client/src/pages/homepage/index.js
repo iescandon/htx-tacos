@@ -187,14 +187,14 @@ function Home({ restaurants, setRestaurants }) {
 				<div className="row">
 					<div className="col-lg-7 col-md-6 col-sm-12 pr-0">
 						<div className="row">
-							<div className="col">
+							<div className="col-lg-6 col-md-4 col-sm-3 filterDiv">
 								<Filter
 									sortDistance={sortDistance}
 									sortName={sortName}
 									sortRating={sortRating}
 								/>
 							</div>
-							<div className="col my-auto">
+							<div className="col-lg-6 col-md-8 col-sm-9 my-auto searchDiv">
 								<Search
 									search={search}
 									handleInputChange={handleInputChange}

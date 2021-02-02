@@ -1,17 +1,5 @@
-@media (max-width: 1199px) {
-}
-
-@media (max-width: 991px) {
-}
-
 @media (max-width: 767px) {
 	.addMargin {
 		margin-right: 15px !important;
 	}
-}
-
-@media (max-width: 575px) {
-}
-
-@media (max-width: 414px) {
 }

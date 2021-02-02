@@ -6,3 +6,35 @@
 .btn-light:hover {
 	background-color: white !important;
 }
+
+@media (max-width: 991px) {
+	.filterBtns {
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center !important;
+	}
+	.btn-light {
+		width: 100%;
+	}
+	.filterDiv {
+		padding-left: 15px;
+	}
+	.col-md-8 {
+		width: 50% !important;
+	}
+	.col-md-4 {
+		width: 50% !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.col-sm-9 {
+		width: 60% !important;
+	}
+	.col-sm-3 {
+		width: 40% !important;
+	}
+}
+
+@media (max-width: 575px) {
+}

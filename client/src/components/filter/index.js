@@ -11,7 +11,7 @@ function Filter({ sortDistance, sortRating, sortName }) {
 		<div className="m-3">
 			<div className="row justify-content-center">Filter by:</div>
 			<div className="row justify-content-center">
-				<ButtonGroup aria-label="Basic example">
+				<ButtonGroup className="filterBtns" aria-label="Basic example">
 					<Button
 						variant="light"
 						onClick={() => {

@@ -32,9 +32,6 @@
 	display: none;
 }
 
-@media (max-width: 1199px) {
-}
-
 @media (max-width: 991px) {
 	.res-card,
 	.card-img,
@@ -43,10 +40,8 @@
 	}
 	.cardRatingDiv {
 		position: absolute !important;
-		bottom: 0.5rem !important;
-		right: 0.5rem !important;
-	}
-	.res-card {
+		bottom: 1rem !important;
+		right: 0rem !important;
 	}
 }
 
@@ -59,15 +54,4 @@
 	.showWhenMobile {
 		display: block;
 	}
-	/* .cardRatingDiv {
-		position: absolute !important;
-		bottom: 0.5rem !important;
-		right: 0rem !important;
-	} */
-}
-
-@media (max-width: 575px) {
-}
-
-@media (max-width: 414px) {
 }
