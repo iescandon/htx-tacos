@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.css';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-import UserLocationMarker from '../../assets/userLocation.svg';
 
 const containerStyle = {
 	width: '100%',
@@ -35,16 +34,15 @@ function Map({
 		);
 	}
 
-	if (isLoaded && restaurants && restaurants[0] && restaurants[0].location) {
-		return (
-			<GoogleMap
-				mapContainerStyle={containerStyle}
-				center={centerPoint}
-				zoom={10}
-				onLoad={onMapLoad}
-				options={mapOptions}
-			>
-				{/* {userLocation ? (
+	return (
+		<GoogleMap
+			mapContainerStyle={containerStyle}
+			center={centerPoint}
+			zoom={10}
+			onLoad={onMapLoad}
+			options={mapOptions}
+		>
+			{/* {userLocation ? (
 					<Marker
 						position={{ lat: userLocation.lat, lng: userLocation.lng }}
 						// options={{
@@ -54,30 +52,27 @@ function Map({
 						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
 					/>
 				) : null} */}
-				{restaurants.map((res) => {
-					return (
-						<div key={`${res.location.lat}-${res.location.lng}`}>
-							<Marker
-								key={`${res.location.lat}-${res.location.lng}`}
-								position={{ lat: res.location.lat, lng: res.location.lng }}
-								onClick={() => {
-									scrollToDiv(res._id);
-									// setSelectedMarker(marker);
-									// selectTrail(marker);
-								}}
-								// options={{
-								// 	icon: require(`../../assets/${marker.open}.svg`),
-								// }}
-								animation={2}
-							/>
-						</div>
-					);
-				})}
-			</GoogleMap>
-		);
-	} else {
-		return <div></div>;
-	}
+			{restaurants.map((res) => {
+				return (
+					<div key={`${res.location.lat}-${res.location.lng}`}>
+						<Marker
+							key={`${res.location.lat}-${res.location.lng}`}
+							position={{ lat: res.location.lat, lng: res.location.lng }}
+							onClick={() => {
+								scrollToDiv(res._id);
+								// setSelectedMarker(marker);
+								// selectTrail(marker);
+							}}
+							// options={{
+							// 	icon: require(`../../assets/${marker.open}.svg`),
+							// }}
+							animation={2}
+						/>
+					</div>
+				);
+			})}
+		</GoogleMap>
+	);
 }
 
 export default Map;
