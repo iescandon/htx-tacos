@@ -9,9 +9,15 @@ h1 {
 	object-fit: cover;
 }
 
-.fa-star {
+.star {
 	padding-top: 3px;
-	font-size: 28px !important;
+	font-size: 28px;
+	font-family: 'Bebas Neue', cursive;
+}
+
+.address:hover {
+	cursor: pointer;
+	font-weight: 600;
 }
 
 .rating {
@@ -26,15 +32,4 @@ h1 {
 	position: absolute;
 	cursor: pointer;
 	color: rgb(255, 230, 0);
-}
-
-.star {
-	padding-top: 3px;
-	font-size: 28px;
-	font-family: 'Bebas Neue', cursive;
-}
-
-.address:hover {
-	cursor: pointer;
-	font-weight: 600;
 }

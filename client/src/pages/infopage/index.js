@@ -124,37 +124,3 @@ function InfoPage({ restaurants, addRating }) {
 }
 
 export default InfoPage;
-
-// import React, { useState, useEffect } from 'react';
-// import './style.css';
-// import InfoComponent from '../../components/info';
-
-// function InfoPage({ restaurants, addRating }) {
-// 	const [restaurantID, setRestaurantID] = useState('');
-
-// 	useEffect(() => {
-// 		setRestaurant();
-// 	}, []);
-
-// 	const setRestaurant = () => {
-// 		setRestaurantID(window.location.pathname.replace('/', ''));
-// 	};
-
-// 	return (
-// 		<div className="container mt-4">
-// 			{restaurants.map((res) => {
-// 				if (res._id === restaurantID) {
-// 					return (
-// 						<InfoComponent
-// 							res={res}
-// 							restaurantID={restaurantID}
-// 							addRating={addRating}
-// 						/>
-// 					);
-// 				}
-// 			})}
-// 		</div>
-// 	);
-// }
-
-// export default InfoPage;

@@ -18,7 +18,6 @@ function Home({ restaurants, setRestaurants }) {
 
 	useEffect(() => {
 		getUserLocation();
-		// addInfo();
 	}, []);
 
 	useEffect(() => {
@@ -46,11 +45,6 @@ function Home({ restaurants, setRestaurants }) {
 		);
 	};
 
-	//TODO REFACTOR THIS FUNCTION ITS GLITCHY
-	// const addInfo = () => {
-	// 	console.log('add info function');
-	// 	console.log(restaurants);
-	// const newrestaurants = [...restaurants];
 	restaurants.map((restaurant) => {
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
 		Geocode.fromAddress(restaurant.address).then(
@@ -78,8 +72,6 @@ function Home({ restaurants, setRestaurants }) {
 			}
 		);
 	});
-	// setRestaurants(newrestaurants);
-	// };
 
 	const handleInputChange = ({ target }) => {
 		const { value } = target;

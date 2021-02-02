@@ -12,13 +12,7 @@ const mapOptions = {
 	zoomControl: true,
 };
 
-function Map({
-	restaurants,
-	centerPoint,
-	onMapLoad,
-	userLocation,
-	scrollToDiv,
-}) {
+function Map({ restaurants, centerPoint, onMapLoad, scrollToDiv }) {
 	const { isLoaded, loadError } = useLoadScript({
 		googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
 	});
@@ -42,16 +36,6 @@ function Map({
 			onLoad={onMapLoad}
 			options={mapOptions}
 		>
-			{/* {userLocation ? (
-					<Marker
-						position={{ lat: userLocation.lat, lng: userLocation.lng }}
-						// options={{
-						// 	icon: require('../../assets/userLocation.svg'),
-						// }}
-						animation={2}
-						// labelAnchor={{ lat: userLocation.lat, lng: userLocation.lng }}
-					/>
-				) : null} */}
 			{restaurants.map((res) => {
 				return (
 					<div key={`${res.location.lat}-${res.location.lng}`}>
@@ -60,12 +44,7 @@ function Map({
 							position={{ lat: res.location.lat, lng: res.location.lng }}
 							onClick={() => {
 								scrollToDiv(res._id);
-								// setSelectedMarker(marker);
-								// selectTrail(marker);
 							}}
-							// options={{
-							// 	icon: require(`../../assets/${marker.open}.svg`),
-							// }}
 							animation={2}
 						/>
 					</div>

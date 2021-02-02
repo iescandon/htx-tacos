@@ -6,19 +6,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/htxtacosDB', {
 	useFindAndModify: false,
 });
 
-// let messageSeed = [
-// 	{
-// 		name: 'Inez Escandon',
-// 		email: 'iescan4@gmail.com',
-// 		message: 'Hello World!',
-// 	},
-// ];
-
 let restaurantSeed = [
 	{
 		name: "Torchy's Tacos",
 		address: '2411 S Shepherd Dr, Houston, TX 77019',
-		// hours: [{"monday": }]
 		phoneNumber: '713-595-8226',
 		rating: [],
 		website: 'https://torchystacos.com/',
@@ -28,7 +19,6 @@ let restaurantSeed = [
 	{
 		name: 'Velvet Taco',
 		address: '4819 Washington Ave, Houston, TX 77007',
-		// hours: [{"monday": }]
 		phoneNumber: '832-834-5908',
 		rating: [2, 3, 4],
 		website: 'https://www.velvettaco.com/',
@@ -38,7 +28,6 @@ let restaurantSeed = [
 	{
 		name: 'Tacos A Go Go',
 		address: '3704 Main St, Houston, TX 77002',
-		// hours: [{"monday": }]
 		phoneNumber: '713-807-8226',
 		rating: [4],
 		website: 'https://www.tacosagogo.com/',
@@ -48,7 +37,6 @@ let restaurantSeed = [
 	{
 		name: "Fuzzy's Taco Shop",
 		address: '10275 B S Post Oak Rd, Houston, TX 77096',
-		// hours: [{"monday": }]
 		phoneNumber: '281-501-9917',
 		rating: [3],
 		website: 'https://www.fuzzystacoshop.com/locations/houston-tx-meyerland/',
@@ -58,7 +46,6 @@ let restaurantSeed = [
 	{
 		name: 'Chilosos',
 		address: '701 E 20th St, Houston, TX 77008',
-		// hours: [{"monday": }]
 		phoneNumber: '713-868-2273',
 		rating: [5, 5, 5, 4],
 		website: 'https://chilososhouston.com/',
@@ -68,7 +55,6 @@ let restaurantSeed = [
 	{
 		name: 'La Calle Tacos',
 		address: '909 Franklin St, Houston, TX 77002',
-		// hours: [{"monday": }]
 		phoneNumber: '832-735-8226',
 		rating: [3],
 		website: 'https://www.lacalletacos.com/',
@@ -87,14 +73,3 @@ db.Restaurants.deleteMany({})
 		console.error(err);
 		process.exit(1);
 	});
-
-// db.Users.deleteMany({})
-// 	.then(() => db.Users.collection.insertMany(messageSeed))
-// 	.then((data) => {
-// 		console.log(data.result.n + ' records inserted!');
-// 		process.exit(0);
-// 	})
-// 	.catch((err) => {
-// 		console.error(err);
-// 		process.exit(1);
-// 	});
