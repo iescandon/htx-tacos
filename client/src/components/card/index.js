@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
+import CardRating from '../cardRating';
 import './style.css';
 
 function CardComponent({ restaurant }) {
-	const starArray = [1, 2, 3, 4, 5];
 	useEffect(() => {
 		ratingAverage();
 	}, []);
@@ -32,13 +32,15 @@ function CardComponent({ restaurant }) {
 				<Card.ImgOverlay>
 					<Card.Title>
 						<div className="row">
-							<div className="col-8">
+							{/* <CardRating className="showWhenMobile" restaurant={restaurant} /> */}
+							<div className="col-md-8 col-sm-12">
 								<p className="mb-0">{restaurant.name}</p>
 								{restaurant.distance ? (
 									<p className="distance">{restaurant.distance} mi</p>
 								) : null}
 							</div>
-							<div className="col-4 d-flex justify-content-end">
+							<CardRating restaurant={restaurant} />
+							{/* <div className="col-md-4 col-sm-12 d-flex justify-content-end">
 								{restaurant.ratingAvg ? (
 									<div>
 										<span className="mr-1">{restaurant.ratingAvg}</span>
@@ -67,7 +69,7 @@ function CardComponent({ restaurant }) {
 										})}
 									</div>
 								)}
-							</div>
+							</div> */}
 						</div>
 					</Card.Title>
 				</Card.ImgOverlay>

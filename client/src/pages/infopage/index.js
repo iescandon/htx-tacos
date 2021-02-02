@@ -25,10 +25,10 @@ function InfoPage({ restaurants, addRating }) {
 				if (res._id === restaurantID) {
 					return (
 						<div className="row">
-							<div className="col my-auto">
+							<div className="col-md-6 col-sm-12 my-auto">
 								<img className="infoImg" src={res.image} alt="" />
 							</div>
-							<div className="col my-auto">
+							<div className="col-md-6 col-sm-12 my-auto">
 								<h1 className="infoHeader row justify-content-center">
 									{res.name}
 								</h1>

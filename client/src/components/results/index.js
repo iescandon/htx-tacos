@@ -5,7 +5,7 @@ import './style.css';
 
 function Results({ restaurants }) {
 	return (
-		<div className="col">
+		<div className="col addMargin">
 			{restaurants.map((restaurant) => {
 				return (
 					<Link

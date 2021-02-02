@@ -185,7 +185,7 @@ function Home({ restaurants, setRestaurants }) {
 		<div className="">
 			{restaurants && restaurants[0] && restaurants[0].distance ? (
 				<div className="row">
-					<div className="col-7 pr-0">
+					<div className="col-lg-7 col-md-6 col-sm-12 pr-0">
 						<div className="row">
 							<div className="col">
 								<Filter
@@ -206,7 +206,7 @@ function Home({ restaurants, setRestaurants }) {
 							<Results restaurants={restaurants} />
 						</div>
 					</div>
-					<div className="col-5 pl-0" id="map_canvas">
+					<div className="col-lg-5 col-md-6 col-sm-12 pl-0 map_canvas hideWhenMobile">
 						<Map
 							restaurants={restaurants}
 							centerPoint={centerPoint}
