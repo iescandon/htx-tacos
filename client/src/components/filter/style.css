@@ -37,4 +37,14 @@
 }
 
 @media (max-width: 575px) {
+	.form-control {
+		width: 75% !important;
+	}
+	.filterDiv {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	.btnFilterDiv {
+		font-size: 12px;
+	}
 }
