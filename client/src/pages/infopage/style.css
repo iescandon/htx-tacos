@@ -14,6 +14,9 @@ h1 {
 	font-size: 28px;
 	font-family: 'Bebas Neue', cursive;
 }
+.starWhite {
+	color: white;
+}
 
 .address:hover {
 	cursor: pointer;
@@ -32,4 +35,15 @@ h1 {
 	position: absolute;
 	cursor: pointer;
 	color: rgb(255, 230, 0);
+}
+
+.ratingCard {
+	background-color: white;
+	border-color: #8a8b8b !important;
+	border-radius: 50% !important;
+}
+
+.cardMessage {
+	font-family: 'Bebas Neue', cursive;
+	font-size: 28px;
 }
