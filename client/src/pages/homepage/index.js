@@ -207,18 +207,10 @@ function Home({ restaurants, setRestaurants }) {
 					</div>
 				</div>
 			) : (
-				<div className="container">
-					<div className="row text-center">
-						<div className="col loadingDiv my-auto">
-							<div className="sk-circle">
-								{spinnerArray.map((num) => {
-									return (
-										<div key={num} className={`sk-circle${num} sk-child`}></div>
-									);
-								})}
-							</div>
-						</div>
-					</div>
+				<div className="sk-circle">
+					{spinnerArray.map((num) => {
+						return <div key={num} className={`sk-circle${num} sk-child`}></div>;
+					})}
 				</div>
 			)}
 		</div>
