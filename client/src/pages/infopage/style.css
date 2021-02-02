@@ -39,8 +39,8 @@ h1 {
 
 .ratingCard {
 	background-color: white;
-	border-color: #8a8b8b !important;
-	border-radius: 50% !important;
+	/* border-color: #8a8b8b !important; */
+	/* border-radius: 50% !important; */
 }
 
 .cardMessage {
