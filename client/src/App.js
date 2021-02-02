@@ -25,6 +25,20 @@ function App() {
 			});
 	};
 
+	const addRating = (id, rating) => {
+		console.log('in app.js');
+		console.log(rating);
+		API.add(id, rating)
+			.then((res) => {
+				console.log('success');
+				console.log(res.data);
+				getRestaurants();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<div>
 			<Navbar />
@@ -52,7 +66,9 @@ function App() {
 					/>
 					<Route
 						path="/:restaurantID"
-						render={() => <InfoPage restaurants={restaurants} />}
+						render={() => (
+							<InfoPage restaurants={restaurants} addRating={addRating} />
+						)}
 					/>
 					<ToastContainer
 						position="bottom-left"

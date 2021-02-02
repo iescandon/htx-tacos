@@ -3,9 +3,12 @@ import './style.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
 
-function InfoPage({ restaurants }) {
+function InfoPage({ restaurants, addRating }) {
 	const notify = () => toast.dark('Address Copied!');
+	const notify2 = () => toast.dark('Rating Received!');
 	const [restaurantID, setRestaurantID] = useState('');
+	const [rating, setRating] = useState();
+	const starArray = [1, 2, 3, 4, 5];
 
 	useEffect(() => {
 		setRestaurant();
@@ -46,38 +49,75 @@ function InfoPage({ restaurants }) {
 									{res.website}
 								</a>
 								<div className="row justify-content-center mt-3">
-									<div className="rating">
-										<span
-											className="star"
-											onClick={() => console.log('5 star rating')}
-										>
-											☆
-										</span>
-										<span
-											className="star"
-											onClick={() => console.log('4 star rating')}
-										>
-											☆
-										</span>
-										<span
-											className="star"
-											onClick={() => console.log('3 star rating')}
-										>
-											☆
-										</span>
-										<span
-											className="star"
-											onClick={() => console.log('2 star rating')}
-										>
-											☆
-										</span>
-										<span
-											className="star"
-											onClick={() => console.log('1 star rating')}
-										>
-											☆
-										</span>
-									</div>
+									{!rating ? (
+										<div className="rating">
+											<span
+												className="star"
+												onClick={() => {
+													const r = 5;
+													setRating(5);
+													addRating(restaurantID, r);
+													notify2();
+												}}
+											>
+												☆
+											</span>
+											<span
+												className="star"
+												onClick={() => {
+													const r = 4;
+													setRating(4);
+													addRating(restaurantID, r);
+													notify2();
+												}}
+											>
+												☆
+											</span>
+											<span
+												className="star"
+												onClick={() => {
+													const r = 3;
+													setRating(3);
+													addRating(restaurantID, r);
+													notify2();
+												}}
+											>
+												☆
+											</span>
+											<span
+												className="star"
+												onClick={() => {
+													const r = 2;
+													setRating(2);
+													addRating(restaurantID, r);
+													notify2();
+												}}
+											>
+												☆
+											</span>
+											<span
+												className="star"
+												onClick={() => {
+													const r = 1;
+													setRating(1);
+													addRating(restaurantID, r);
+													notify2();
+												}}
+											>
+												☆
+											</span>
+										</div>
+									) : (
+										<div>
+											{starArray.map((num) => {
+												if (rating >= num) {
+													return <span className="star starYellow">★</span>;
+												} else {
+													return <span className="star starYellow">☆</span>;
+												}
+											})}
+										</div>
+									)}
 								</div>
 							</div>
 						</div>

@@ -12,8 +12,19 @@ router.get('/api/tacos', (req, res) => {
 		});
 });
 
-// router.use((req, res) =>
-// 	res.sendFile(path.join(__dirname, '../client/build/index.html'))
-// );
+router.put('/api/tacos/:id', (req, res) => {
+	console.log('in backend api');
+	console.log(req.body.rating);
+	db.Restaurants.updateOne(
+		{ _id: req.params.id },
+		{ $push: { rating: req.body.rating } }
+	)
+		.then((data) => {
+			res.json(data);
+		})
+		.catch((err) => {
+			res.status(400).json(err);
+		});
+});
 
 module.exports = router;

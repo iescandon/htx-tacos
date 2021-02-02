@@ -76,7 +76,7 @@ function Map({
 			</GoogleMap>
 		);
 	} else {
-		return <div>...loading</div>;
+		return <div></div>;
 	}
 }
 
