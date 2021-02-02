@@ -32,7 +32,6 @@ function CardComponent({ restaurant }) {
 				<Card.ImgOverlay>
 					<Card.Title>
 						<div className="row">
-							{/* <CardRating className="showWhenMobile" restaurant={restaurant} /> */}
 							<div className="col-md-8 col-sm-12">
 								<p className="mb-0">{restaurant.name}</p>
 								{restaurant.distance ? (
@@ -40,36 +39,6 @@ function CardComponent({ restaurant }) {
 								) : null}
 							</div>
 							<CardRating restaurant={restaurant} />
-							{/* <div className="col-md-4 col-sm-12 d-flex justify-content-end">
-								{restaurant.ratingAvg ? (
-									<div>
-										<span className="mr-1">{restaurant.ratingAvg}</span>
-										{starArray.map((num) => {
-											if (restaurant.ratingAvg >= num) {
-												return <span className="star starYellow">★</span>;
-											} else {
-												return <span className="star">★</span>;
-											}
-										})}
-										<span className="mr-1" id="ratingArrayLength">
-											({restaurant.rating.length})
-										</span>
-									</div>
-								) : (
-									<div>
-										{starArray.map((num) => {
-											return (
-												<div>
-													<span className="star">☆</span>
-													<span className="mr-1" id="ratingArrayLength">
-														(0)
-													</span>
-												</div>
-											);
-										})}
-									</div>
-								)}
-							</div> */}
 						</div>
 					</Card.Title>
 				</Card.ImgOverlay>
