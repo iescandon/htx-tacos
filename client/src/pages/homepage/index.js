@@ -7,11 +7,11 @@ import Map from '../../components/map';
 import Filter from '../../components/filter';
 import Search from '../../components/search';
 
-function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
-	// const [centerPoint, setCenterPoint] = useState({
-	// 	lat: 29.749907,
-	// 	lng: -95.358421,
-	// });
+function Home({ restaurants, setRestaurants }) {
+	const [centerPoint, setCenterPoint] = useState({
+		lat: 29.749907,
+		lng: -95.358421,
+	});
 	const [userLocation, setUserLocation] = useState({
 		lat: 29.749907,
 		lng: -95.358421,
@@ -27,9 +27,9 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 		getDistDifference();
 	}, [centerPoint.lat]);
 
-	// useEffect(() => {
-	// 	getInitInfo();
-	// }, [restaurants[0]]);
+	useEffect(() => {
+		getInitInfo();
+	}, [restaurants[0]]);
 
 	const mapRef = React.useRef();
 	const onMapLoad = React.useCallback((map) => {
@@ -50,6 +50,26 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 			},
 			() => null
 		);
+		// var options = {
+		// 	enableHighAccuracy: true,
+		// 	timeout: 5000,
+		// 	maximumAge: 0,
+		// };
+
+		// function success(pos) {
+		// 	var crd = pos.coords;
+
+		// 	console.log('Your current position is:');
+		// 	console.log(`Latitude : ${crd.latitude}`);
+		// 	console.log(`Longitude: ${crd.longitude}`);
+		// 	console.log(`More or less ${crd.accuracy} meters.`);
+		// }
+
+		// function error(err) {
+		// 	console.warn(`ERROR(${err.code}): ${err.message}`);
+		// }
+
+		// navigator.geolocation.getCurrentPosition(success, error, options);
 	};
 
 	const resetCenterPoint = () => {
@@ -59,38 +79,38 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 		});
 	};
 
-	// const getInitInfo = () => {
-	// 	console.log(restaurants);
-	// 	const newrestaurants = [...restaurants];
-	// 	newrestaurants.map((restaurant) => {
-	// 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-	// 		Geocode.fromAddress(restaurant.address).then(
-	// 			(response) => {
-	// 				const { lat, lng } = response.results[0].geometry.location;
-	// 				restaurant.location = {
-	// 					lat,
-	// 					lng,
-	// 				};
-	// 				restaurant.distance = (
-	// 					getDistance(
-	// 						{
-	// 							latitude: restaurant.location.lat,
-	// 							longitude: restaurant.location.lng,
-	// 						},
-	// 						{
-	// 							latitude: centerPoint.lat,
-	// 							longitude: centerPoint.lng,
-	// 						}
-	// 					) * 0.000621371192
-	// 				).toFixed(2);
-	// 			},
-	// 			(error) => {
-	// 				console.error(error);
-	// 			}
-	// 		);
-	// 	});
-	// 	setRestaurants(newrestaurants);
-	// };
+	const getInitInfo = () => {
+		console.log(restaurants);
+		const newrestaurants = [...restaurants];
+		newrestaurants.map((restaurant) => {
+			Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+			Geocode.fromAddress(restaurant.address).then(
+				(response) => {
+					const { lat, lng } = response.results[0].geometry.location;
+					restaurant.location = {
+						lat,
+						lng,
+					};
+					restaurant.distance = (
+						getDistance(
+							{
+								latitude: restaurant.location.lat,
+								longitude: restaurant.location.lng,
+							},
+							{
+								latitude: centerPoint.lat,
+								longitude: centerPoint.lng,
+							}
+						) * 0.000621371192
+					).toFixed(2);
+				},
+				(error) => {
+					console.error(error);
+				}
+			);
+		});
+		setRestaurants(newrestaurants);
+	};
 
 	// restaurants.map((restaurant) => {
 	// 	Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
