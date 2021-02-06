@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Geocode from 'react-geocode';
 import { getDistance } from 'geolib';
 import './style.css';
-import Results from '../../components/results';
-import Map from '../../components/map';
-import Filter from '../../components/filter';
-import Search from '../../components/search';
+import Results from './components/results';
+import Map from './components/map';
+import Filter from './components/filter';
+import Search from './components/search';
 
-function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
-	// const [centerPoint, setCenterPoint] = useState({
-	// 	lat: 29.749907,
-	// 	lng: -95.358421,
-	// });
+function Home({ restaurants, setRestaurants }) {
+	const [centerPoint, setCenterPoint] = useState({
+		lat: 29.749907,
+		lng: -95.358421,
+	});
 	const [userLocation, setUserLocation] = useState({
 		lat: 29.749907,
 		lng: -95.358421,
@@ -26,10 +26,6 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 	useEffect(() => {
 		getDistDifference();
 	}, [centerPoint.lat]);
-
-	// useEffect(() => {
-	// 	getInitInfo();
-	// }, [restaurants[0]]);
 
 	const mapRef = React.useRef();
 	const onMapLoad = React.useCallback((map) => {
@@ -59,66 +55,33 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 		});
 	};
 
-	// const getInitInfo = () => {
-	// 	console.log(restaurants);
-	// 	const newrestaurants = [...restaurants];
-	// 	newrestaurants.map((restaurant) => {
-	// 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-	// 		Geocode.fromAddress(restaurant.address).then(
-	// 			(response) => {
-	// 				const { lat, lng } = response.results[0].geometry.location;
-	// 				restaurant.location = {
-	// 					lat,
-	// 					lng,
-	// 				};
-	// 				restaurant.distance = (
-	// 					getDistance(
-	// 						{
-	// 							latitude: restaurant.location.lat,
-	// 							longitude: restaurant.location.lng,
-	// 						},
-	// 						{
-	// 							latitude: centerPoint.lat,
-	// 							longitude: centerPoint.lng,
-	// 						}
-	// 					) * 0.000621371192
-	// 				).toFixed(2);
-	// 			},
-	// 			(error) => {
-	// 				console.error(error);
-	// 			}
-	// 		);
-	// 	});
-	// 	setRestaurants(newrestaurants);
-	// };
-
-	// restaurants.map((restaurant) => {
-	// 	Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
-	// 	Geocode.fromAddress(restaurant.address).then(
-	// 		(response) => {
-	// 			const { lat, lng } = response.results[0].geometry.location;
-	// 			restaurant.location = {
-	// 				lat,
-	// 				lng,
-	// 			};
-	// 			restaurant.distance = (
-	// 				getDistance(
-	// 					{
-	// 						latitude: restaurant.location.lat,
-	// 						longitude: restaurant.location.lng,
-	// 					},
-	// 					{
-	// 						latitude: centerPoint.lat,
-	// 						longitude: centerPoint.lng,
-	// 					}
-	// 				) * 0.000621371192
-	// 			).toFixed(2);
-	// 		},
-	// 		(error) => {
-	// 			console.error(error);
-	// 		}
-	// 	);
-	// });
+	restaurants.map((restaurant) => {
+		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+		Geocode.fromAddress(restaurant.address).then(
+			(response) => {
+				const { lat, lng } = response.results[0].geometry.location;
+				restaurant.location = {
+					lat,
+					lng,
+				};
+				restaurant.distance = (
+					getDistance(
+						{
+							latitude: restaurant.location.lat,
+							longitude: restaurant.location.lng,
+						},
+						{
+							latitude: centerPoint.lat,
+							longitude: centerPoint.lng,
+						}
+					) * 0.000621371192
+				).toFixed(2);
+			},
+			(error) => {
+				console.error(error);
+			}
+		);
+	});
 
 	const handleInputChange = ({ target }) => {
 		const { value } = target;
@@ -220,7 +183,7 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 
 	return (
 		<div className="">
-			{restaurants && restaurants[0] ? (
+			{restaurants && restaurants[0] && restaurants[0].distance ? (
 				<div className="row">
 					<div className="col-lg-7 col-md-6 col-sm-12 pr-0">
 						<div className="row btnFilterDiv">
@@ -243,17 +206,15 @@ function Home({ centerPoint, setCenterPoint, restaurants, setRestaurants }) {
 							<Results restaurants={restaurants} />
 						</div>
 					</div>
-					{restaurants[0].location ? (
-						<div className="col-lg-5 col-md-6 col-sm-12 pl-0 map_canvas hideWhenMobile">
-							<Map
-								restaurants={restaurants}
-								centerPoint={centerPoint}
-								onMapLoad={onMapLoad}
-								resetCenterPoint={resetCenterPoint}
-								scrollToDiv={scrollToDiv}
-							/>{' '}
-						</div>
-					) : null}
+					<div className="col-lg-5 col-md-6 col-sm-12 pl-0 map_canvas hideWhenMobile">
+						<Map
+							restaurants={restaurants}
+							centerPoint={centerPoint}
+							onMapLoad={onMapLoad}
+							resetCenterPoint={resetCenterPoint}
+							scrollToDiv={scrollToDiv}
+						/>
+					</div>
 				</div>
 			) : (
 				<div className="sk-circle">
